@@ -1,13 +1,16 @@
 $(document).ready
 {
-    $('#my-map').append('<img id="theImg" src="Ukraine1.jpg" />')
+    $('#map-2').hide()
 
     $('#dropdown').change(function () {
         let val = $('#dropdown').val()
         if (val === 'ukraine1') {
-            $('#theImg').attr('src', 'Ukraine1.jpg')
+            $('#map-2').hide()
+            $('#map-1').show()
         } else {
-            $('#theImg').attr('src', 'Ukraine2.jpg')
+            $('#map-1').hide()
+            $('#map-2').show()
+            map_6e8f012e06914307afc3680b4ca6e7f0.invalidateSize()
         }
     })
 }
