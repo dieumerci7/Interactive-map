@@ -1,0 +1,15 @@
+.folium-map {
+    background-color: silver;
+}
+.foliumtooltip {
+
+}
+.foliumtooltip table{
+    margin: auto;
+}
+.foliumtooltip tr{
+    text-align: left;
+}
+.foliumtooltip th{
+    padding: 2px; padding-right: 8px;
+}

@@ -1,0 +1,119 @@
+:root{
+    --mapHeight: 700px;
+    --mapWidth: 1000px;
+}
+/* maps 2001 */
+#map_336388c1c0594ab2c66af6afa12197f5, #map_a5ab95940eebb9a5730e32c125d85ca4,
+#map_fa9666b6dfadfd662e54386c9989f043, #map_4ea74f22a7da31f0d14c536a01d15dec,
+#map_3a6397e3a98848ec570e01c3b956270f, #map_59c0854e716b73b2ee9a0c90500d08b3,
+#map_74362a66daee557de731efeb2e554597, #map_37ed2f64604ca8667073fccaebcac14a,
+#map_479b95009cb71d04f6e3d82b654f5e84, #map_f0c1ae40893416c370cac472c880f2c7,
+#map_3c636e096f088a205f2e47a02c3731ce, #map_84f98d0c7d2da47ec13a512a94a63a94,
+#map_565b1615c382beff77e44b316152f76f, #map_92f3dcbd1ba04c7b5e2068a71e84343c,
+#map_6fed0a58599c310da555f6e9a00a3e96, #map_f0cdb18409c29119d6b32fc965b674a4,
+#map_d26e2d0deec24ca7aa55131332df3f33, #map_93e2098b257bd00da1b0f2b949b7444c{
+    position: relative;
+    width: var(--mapWidth);
+    height: var(--mapHeight);
+    left: 0.0%;
+    top: 0.0%;
+}
+
+/* maps 1989 */
+#map_2488a2de6718fb7e218b7db2b9343d6d, #map_1f4ba356da92d43a9220fd85760b090f,
+#map_239a22e53127770fb5b6682766918d30, #map_df2a6176d499aa134fc28b261f6ea801,
+#map_36de4db921e43ea044bf933d3a88fa7a, #map_34b601f1ffa5219db9bc66bc6854b3f0,
+#map_c17eb3baae8dc699d3b817c82392733d, #map_3cba70bdd44c50b94caec562d23bfbd8,
+#map_fc59c617949d2360965cd4b839afdfb0, #map_dce332e1dac76c9001c69d8c5abeea93,
+#map_8dc79fa8fed703948ffa958057e385cd, #map_f7165220cf95dc57858bf298caece42a,
+#map_1243632302a7976e83d6409c8a074a3d, #map_7089f9d230eea61840f905a6f3fecaeb,
+#map_815e1f7d1630ecb1884f2ebf88e1015f, #map_20f768dcfd0a541a3c730f1eb338c75d,
+#map_83ec59278df7a5bc6bbea91977f1010f, #map_b3b92d332fd1ddbc6454caf6bbffc272,
+#map_1b1a584089d863b8e31af50101600816, #map_77a1ace154eea2b77fc663e699b7c238,
+#map_312efb7b3ae06c38f697d449652289ed, #map_dd0e055d359805c36e147bec9e5ee4bc,
+#map_dc0de8315f5391356feaf50f6b2e7952, #map_fea83e164123b2dde9b3dd0e14c796a1,
+#map_ad24f5885eb2e4a5cb77da985295a24b, #map_3b12d21f0f322d0f4462a7d6af756fe3{
+    position: relative;
+    width: var(--mapWidth);
+    height: var(--mapHeight);
+    left: 0.0%;
+    top: 0.0%;
+}
+
+/* maps1979 */
+#map_fde3c1c833463e5db72d28c1197aadda, #map_8afb1c09649c9b93fcefacf80c5f7fe8,
+#map_bddc1284f6e9f0b62dda5ad4133db380, #map_6d5e0d9965784fdc0b5002bbe8d67a06,
+#map_6e2e2fc8d229db7beb0915d87512042f, #map_2a9554514281a5b02f75a098c91a38c1,
+#map_ed75934111e17ddc954e1baf0c255566, #map_cc78b752cae911b620643519f73b4e6a,
+#map_23f6d1963523b4ac6c8cc433f10527c0, #map_5b890f5a698e4da63c9f66a7aa56833e,
+#map_c70fb34fea15ecbf9f198774c9251f6d, #map_97f831903a5a974a18a71a7fe7138997,
+#map_68268081a730661151eb03ce83fc34af, #map_d1d68166be98f99b876cbe6471b29cad{
+    position: relative;
+    width: var(--mapWidth);
+    height: var(--mapHeight);
+    left: 0.0%;
+    top: 0.0%;
+}
+
+/* maps 1970 */
+#map_98564c962727a290441d2607c6d55692, #map_84d7880b62c908cac146c7c2a1a90d52,
+#map_349056249b53c3b10bf2e07df99458e2, #map_699e6a02c3b226bd6d6a949501a7de36,
+#map_b918451a95a9496b00b57b858365b16c, #map_12b9cc49a89f351eadbdec0154be24cf,
+#map_525b5d458f3d1c958ab45fd472a4c4c0, #map_d9236c5efaa2b0b2da4d954147f31425,
+#map_52e71a8672ace0e96b74a72ee34cb2ff, #map_0f48893eeca347dd4bdc5911959a19c0,
+#map_4f876c4ad75827163ccede93a2b7f9d0, #map_f8a345e1b54999a9da65e406296bfdb1,
+#map_458b2214a9fb3cc67640070e0765755c, #map_d9bbe96091daf6e8d9c358e7711683f4,
+#map_ad12fa948b60f00374c83d22acac19dd, #map_206c25b63f5990cedee8d60889d548a8,
+#map_22216f1858c768ae09afd3126d029112, #map_5020149c3b69c165cdac5a3f7f9f290a{
+    position: relative;
+    width: var(--mapWidth);
+    height: var(--mapHeight);
+    left: 0.0%;
+    top: 0.0%;
+}
+
+/* maps 1959 */
+#map_30f8a4b361a47a620318102a1a1ef893, #map_51b5cf96674136b3da45f2ee13554846,
+#map_dfb759433018496b0f76e055ee04d68e, #map_fde02dda9fff7d50500dc1b592598693,
+#map_0944a7c3f8e880275fc46914c901602e, #map_463d72bb95917d782d86aa769af7e044,
+#map_4b0be4cd4352d8f95a7cb946b5ecd74f, #map_e14df29a6bb8277a25811352791d6bfd,
+#map_3975fb39d6b586000507c2163c1d28cd, #map_c4307bd7318decb1315cc6591536a277,
+#map_b9d0b1f5375a4b2f5c51d2949726b7f7, #map_51f12d8010fa28408d3c01a566a7b67e,
+#map_116a65eb5bdfe55a25cd3ede0224ea95{
+    position: relative;
+    width: var(--mapWidth);
+    height: var(--mapHeight);
+    left: 0.0%;
+    top: 0.0%;
+}
+
+/* maps 1927 */
+#map_80a0a8e548c6cc801207dac787e17c3b, #map_7390ecc6050c2c86d58273c4d76cabb2,
+#map_061749b35ef271a5d44b090621feb28c, #map_d83dd6ee452fbb54f2ee0cf23d5615a2,
+#map_1e3346aa5ed9d0aabc1682838074663e, #map_5af201dd990c7b20f9049888f3eff779,
+#map_7316974ce813a403e535bf68adff022a, #map_b7c9ad8b016b44c191b392fb5424a0a4,
+#map_0239eb14e8fbf812ff6615bcdf222dcf, #map_1ed9b6aa021c2bd9f1a04e047943cdd4,
+#map_a2cf69216e67e41c71ea90d2c977cf7d, #map_59396dc08b544d3e418a929e33e9c5fe,
+#map_c672b45a9a1fdd798e7656250d8b5359, #map_b93ec8e6bcc9669b3a1e5b13a5ec668d,
+#map_97e603fa2e3fad8df8d97bff13fe8f75, #map_ab1d27a7e80253a0ed016b1700aba24b{
+    position: relative;
+    width: var(--mapWidth);
+    height: var(--mapHeight);
+    left: 0.0%;
+    top: 0.0%;
+}
+
+/* maps 1910 */
+#map_0ac0fe9eaccda7f8b7515cf3e9baa31a, #map_4b57ed78aaf85580048547c172039df4,
+#map_158dc2d1f44baa16622214faf4b14a8b, #map_a3bcbaaf643506ad142ad9324785de20,
+#map_e7ada59769aba84b2e1ef7fe00504cf3, #map_d506cf733dd06e4198a7cfe8da8d84be,
+#map_ac9cac9a72027dc3ad5a89fb25eae3d9, #map_e4ab9376bc8aab329cc35f4b8c46f770,
+#map_a12773ceab6b6fee8ef25b62265fae37, #map_1b499cc3d05530dcba612943e572d8fb,
+#map_820b33d07252cbf77c64535b07f89993, #map_63e776b154e7088f758ebec3baf327a4,
+#map_67ce28b15b4984ee32936e61d79427a5, #map_6d953ac2c33e81e7991101310e6994b5{
+    position: relative;
+    width: var(--mapWidth);
+    height: var(--mapHeight);
+    left: 0.0%;
+    top: 0.0%;
+}

@@ -7,8 +7,7 @@
         L_DISABLE_3D = false;
     </script>
 
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+<!--    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>-->
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -19,71 +18,658 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    <link rel="stylesheet" href="./css/maps.css"/>
+    <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="stylesheet" href="./css/folium.css"/>
+    <link rel="stylesheet" href="css/popupsHandle.css"/>
+    <link rel="stylesheet" href="css/logos.css"/>
 
     <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <style>
-        #map_c307151d96d6438681188af162b3d7a2 {
-            position: relative;
-            width: 1000.0px;
-            height: 700.0px;
-            left: 0.0%;
-            top: 0.0%;
-        }
-    </style>
-    <style>
-        #map_6e8f012e06914307afc3680b4ca6e7f0 {
-            position: relative;
-            width: 1000.0px;
-            height: 700.0px;
-            left: 0.0%;
-            top: 0.0%;
-        }
-    </style>
-
-
-    <style>
-        .foliumtooltip {
-
-        }
-        .foliumtooltip table{
-            margin: auto;
-        }
-        .foliumtooltip tr{
-            text-align: left;
-        }
-        .foliumtooltip th{
-            padding: 2px; padding-right: 8px;
-        }
-    </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 </head>
 
 <body>
-    <button id="ukraine2" >2</button>
 
-    <script type="text/javascript">
-        document.getElementById("ukraine2").onclick = function () {
-            location.href = "ukraine2.html";
-        };
-    </script>
+    <div class="overlay"></div>
+
+    <div id="nationSidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <button class="dropdown-btn">Nation
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container" id="nation">
+            <a href="#" id="alb" onclick="nationChange(id)">Albanians</a>
+            <a href="#" id="arm" onclick="nationChange(id)">Armenians</a>
+            <a href="#" id="aze" onclick="nationChange(id)">Azerbaijani</a>
+            <a href="#" id="bel" onclick="nationChange(id)">Belarusians</a>
+            <a href="#" id="bul" onclick="nationChange(id)">Bulgarians</a>
+            <a href="#" id="chu" onclick="nationChange(id)">Chuvash people</a>
+            <a href="#" id="kar" onclick="nationChange(id)">Crimean karaites</a>
+            <a href="#" id="cri" onclick="nationChange(id)">Crimean tatars</a>
+            <a href="#" id="cze" onclick="nationChange(id)">Czechs</a>
+            <a href="#" id="czs" onclick="nationChange(id)">Czechs and Slovaks</a>
+            <a href="#" id="gag" onclick="nationChange(id)">Gagauz people</a>
+            <a href="#" id="geo" onclick="nationChange(id)">Georgians</a>
+            <a href="#" id="ger" onclick="nationChange(id)">Germans</a>
+            <a href="#" id="gre" onclick="nationChange(id)">Greeks</a>
+            <a href="#" id="hun" onclick="nationChange(id)">Hungarians</a>
+            <a href="#" id="jew" onclick="nationChange(id)">Jews</a>
+            <a href="#" id="kor" onclick="nationChange(id)">Koreans</a>
+            <a href="#" id="lat" onclick="nationChange(id)">Latvians</a>
+            <a href="#" id="lit" onclick="nationChange(id)">Lithuanians</a>
+            <a href="#" id="mar" onclick="nationChange(id)">Mari people</a>
+            <a href="#" id="mol" onclick="nationChange(id)">Moldovans</a>
+            <a href="#" id="mor" onclick="nationChange(id)">Mordvins</a>
+            <a href="#" id="pol" onclick="nationChange(id)">Poles</a>
+            <a href="#" id="gyp" onclick="nationChange(id)">Roma</a>
+            <a href="#" id="rom" onclick="nationChange(id)">Romanians</a>
+            <a href="#" id="rus" onclick="nationChange(id)">Russians</a>
+            <a href="#" id="slo" onclick="nationChange(id)">Slovaks</a>
+            <a href="#" id="tat" onclick="nationChange(id)">Tatars</a>
+            <a href="#" id="ukr" onclick="nationChange(id)">Ukrainians</a>
+            <a href="#" id="uzb" onclick="nationChange(id)">Uzbeks</a>
+        </div>
+    </div>
+
+    <div id="infoSidepanel" class="sidepanel">
+        <div id="hiddenText"></div>
+<!--        <a href="javascript:void(0)" class="closebtn" onclick="closeInfoNav()">&times;</a>-->
+    </div>
+
+    <div class = "top-bar">
+        <button class="openbtn" onclick="openNav()">&#9776; </button>
+        <span class = "top-bar-btn-name" id="start" onclick="generalInfoRequest()">ABOUT</span>
+        <span class = "delimiter">|</span>
+        <span class = "top-bar-btn-name" id="2001" onclick="yearChange(id)">2001</span>
+        <span class = "delimiter">|</span>
+        <span class = "top-bar-btn-name" id="1989" onclick="yearChange(id)">1989</span>
+        <span class = "delimiter">|</span>
+        <span class = "top-bar-btn-name" id="1979" onclick="yearChange(id)">1979</span>
+        <span class = "delimiter">|</span>
+        <span class = "top-bar-btn-name" id="1970" onclick="yearChange(id)">1970</span>
+        <span class = "delimiter">|</span>
+        <span class = "top-bar-btn-name" id="1959" onclick="yearChange(id)">1959</span>
+        <span class = "delimiter">|</span>
+        <span class = "top-bar-btn-name" id="1927" onclick="yearChange(id)">1927</span>
+        <span class = "delimiter">|</span>
+        <span class = "top-bar-btn-name" id="1910" onclick="yearChange(id)">1910</span>
+        <button class="infobtn" onclick="infoRequest()">?</button>
+    </div>
+
+    <!-- The popup -->
+    <div class="popup"></div>
+
+    <div id="general-info">
+
+        <img src="images/Close_Icon.svg" class="close-icon" onclick="infoCloseIconPressed()"/>
+
+        <span style="font-size: 24px"><b>INTRO</b></span><br>
+        Welcome to the <i>Many Faces of Ukraine</i>, a digital historical mapping platform visualising ethnic
+        diversity of Ukraine’s lands across the twentieth century. The platform allows the user to explore
+        and compare demographic changes in Ukraine, especially among its numerous ethnic
+        communities. It provides a short overview of the ethnic diversity on Ukraine’s lands through
+        available data on ethnic groups, and their native languages in Ukraine in historical perspective.<br>
+
+        All data gathered stem from historical censuses organized by imperial, Soviet and Ukrainian
+        governments. In particular, the researchers’ team analyzed the 1897 Russian Imperial Census,
+        1910 Austrian imperial census, Romanian census of 1930, Czechoslovak census of 1930, Polish
+        census of 1931, as well as Soviet censuses of 1926, 1959, 1970, 1979, 1989. The last census
+        analyzed was conducted in independent Ukraine in 2001.<br><br>
+
+        <span style="font-size: 24px"><b>TEAM</b></span><br>
+
+        <b>COORDINATORS</b>: <a href='#'>Olena Palko</a>, and <a href='#'>Albert Venger</a><br>
+
+        Research Team: Olha Kakovkina, Tetiana Portnova, Yevhenia Venger, Anna Umanska, and Serhii Hladyshuk<br>
+
+        Web-developers: Yur-Liubomysl Dekhtiar, and Bohdan-Yarema Dekhtiar<br><br>
+
+        <span style="font-size: 24px"><b>FUNDING</b></span><br>
+
+        The <i>Many Faces of Ukraine</i> project is funded by the Center for Governance and Culture in Europe (University of St. Gallen). This platform is a part of the project "Promotion of Cooperation in the Humanities and Social Sciences between Switzerland and the States of the Black Sea Region," funded by the Swiss State Secretariat for Education, Research, and Innovation.<br><br>
+
+        <span style="font-size: 24px"><b>LEGAL INFORMATION</b></span><br>
+
+        © 2021–2023 <a href="https://gce.unisg.ch/en">Center for Governance and Culture in Europe</a> | <a href="https://www.unisg.ch/en">General legal information</a> | <a href="https://www.unisg.ch/en/appconfig/footer/datenschutz">Data privacy statement</a><br><br>
+
+        <span style="font-size: 24px"><b>DATA SOURCES</b></span><br>
+
+        Some of the country shapefiles were created using the following data sources:<br>
+        <ul>
+            <li><a href="https://www.naturalearthdata.com/">Natural Earth</a> (Europe 2023)</li>
+            <li><a href="https://gis.huri.harvard.edu/ethnic-composition">Mapa. Digital Atlas of Ukraine</a>. Harvard Ukrainian Research Institute</li>
+            <li><a href="https://purl.stanford.edu/pp624tm0074">Administrative Divisions, Ukraine, 2015</a>. Berkeley, CA, US: University of California, Berkeley. Museum of Vertebrate Zoology, 2015</li>
+        </ul><br><br>
+
+        <span style="font-size: 24px"><b>CONTACT</b></span><br>
+
+        sgmh.basees [at] gmail.com<br>
+    </div>
+
     <div id="my-map">
-        <label for="maps">Choose a folk:</label>
+        <!-- 2001 maps -->
+        <div id="arm2001">
+            <div class="folium-map" id="map_a5ab95940eebb9a5730e32c125d85ca4"></div>
+        </div>
+        <div id="aze2001">
+            <div class="folium-map" id="map_fa9666b6dfadfd662e54386c9989f043"></div>
+        </div>
+        <div id="bel2001">
+            <div class="folium-map" id="map_4ea74f22a7da31f0d14c536a01d15dec"></div>
+        </div>
+        <div id="bul2001">
+            <div class="folium-map" id="map_3a6397e3a98848ec570e01c3b956270f"></div>
+        </div>
+        <div id="cri2001">
+            <div class="folium-map" id="map_59c0854e716b73b2ee9a0c90500d08b3"></div>
+        </div>
+        <div id="gag2001">
+            <div class="folium-map" id="map_74362a66daee557de731efeb2e554597"></div>
+        </div>
+        <div id="geo2001">
+            <div class="folium-map" id="map_37ed2f64604ca8667073fccaebcac14a"></div>
+        </div>
+        <div id="ger2001">
+            <div class="folium-map" id="map_479b95009cb71d04f6e3d82b654f5e84"></div>
+        </div>
+        <div id="gre2001">
+            <div class="folium-map" id="map_f0c1ae40893416c370cac472c880f2c7"></div>
+        </div>
+        <div id="hun2001">
+            <div class="folium-map" id="map_3c636e096f088a205f2e47a02c3731ce"></div>
+        </div>
+        <div id="mol2001">
+            <div class="folium-map" id="map_84f98d0c7d2da47ec13a512a94a63a94"></div>
+        </div>
+        <div id="pol2001">
+            <div class="folium-map" id="map_565b1615c382beff77e44b316152f76f"></div>
+        </div>
+        <div id="gyp2001">
+            <div class="folium-map" id="map_92f3dcbd1ba04c7b5e2068a71e84343c"></div>
+        </div>
+        <div id="rom2001">
+            <div class="folium-map" id="map_6fed0a58599c310da555f6e9a00a3e96"></div>
+        </div>
+        <div id="rus2001">
+            <div class="folium-map" id="map_f0cdb18409c29119d6b32fc965b674a4"></div>
+        </div>
+        <div id="slo2001">
+            <div class="folium-map" id="map_d26e2d0deec24ca7aa55131332df3f33"></div>
+        </div>
+        <div id="tat2001">
+            <div class="folium-map" id="map_93e2098b257bd00da1b0f2b949b7444c"></div>
+        </div>
+        <div id="ukr2001">
+            <div class="folium-map" id="map_336388c1c0594ab2c66af6afa12197f5"></div>
+        </div>
 
-        <select name="maps" id="dropdown">
-            <option value="ukraine1">Ukraine 1</option>
-            <option value="ukraine2">Ukraine 2</option>
-        </select>
+        <!-- 1989 maps -->
         <div id="map-1">
             <div class="folium-map" id="map_c307151d96d6438681188af162b3d7a2" ></div>
         </div>
         <div id="map-2">
             <div class="folium-map" id="map_6e8f012e06914307afc3680b4ca6e7f0" ></div>
         </div>
+        <div id="alb1989">
+            <div class="folium-map" id="map_1f4ba356da92d43a9220fd85760b090f"></div>
+        </div>
+        <div id="arm1989">
+            <div class="folium-map" id="map_239a22e53127770fb5b6682766918d30"></div>
+        </div>
+        <div id="aze1989">
+            <div class="folium-map" id="map_df2a6176d499aa134fc28b261f6ea801"></div>
+        </div>
+        <div id="bel1989">
+            <div class="folium-map" id="map_36de4db921e43ea044bf933d3a88fa7a"></div>
+        </div>
+        <div id="bul1989">
+            <div class="folium-map" id="map_34b601f1ffa5219db9bc66bc6854b3f0"></div>
+        </div>
+        <div id="chu1989">
+            <div class="folium-map" id="map_c17eb3baae8dc699d3b817c82392733d"></div>
+        </div>
+        <div id="cri1989">
+            <div class="folium-map" id="map_3cba70bdd44c50b94caec562d23bfbd8"></div>
+        </div>
+        <div id="cze1989">
+            <div class="folium-map" id="map_fc59c617949d2360965cd4b839afdfb0"></div>
+        </div>
+        <div id="gag1989">
+            <div class="folium-map" id="map_dce332e1dac76c9001c69d8c5abeea93"></div>
+        </div>
+        <div id="geo1989">
+            <div class="folium-map" id="map_8dc79fa8fed703948ffa958057e385cd"></div>
+        </div>
+        <div id="ger1989">
+            <div class="folium-map" id="map_f7165220cf95dc57858bf298caece42a"></div>
+        </div>
+        <div id="gre1989">
+            <div class="folium-map" id="map_1243632302a7976e83d6409c8a074a3d"></div>
+        </div>
+        <div id="hun1989">
+            <div class="folium-map" id="map_7089f9d230eea61840f905a6f3fecaeb"></div>
+        </div>
+        <div id="jew1989">
+            <div class="folium-map" id="map_815e1f7d1630ecb1884f2ebf88e1015f"></div>
+        </div>
+        <div id="kor1989">
+            <div class="folium-map" id="map_20f768dcfd0a541a3c730f1eb338c75d"></div>
+        </div>
+        <div id="mar1989">
+            <div class="folium-map" id="map_83ec59278df7a5bc6bbea91977f1010f"></div>
+        </div>
+        <div id="mol1989">
+            <div class="folium-map" id="map_b3b92d332fd1ddbc6454caf6bbffc272"></div>
+        </div>
+        <div id="mor1989">
+            <div class="folium-map" id="map_1b1a584089d863b8e31af50101600816"></div>
+        </div>
+        <div id="pol1989">
+            <div class="folium-map" id="map_77a1ace154eea2b77fc663e699b7c238"></div>
+        </div>
+        <div id="gyp1989">
+            <div class="folium-map" id="map_312efb7b3ae06c38f697d449652289ed"></div>
+        </div>
+        <div id="rom1989">
+            <div class="folium-map" id="map_3b12d21f0f322d0f4462a7d6af756fe3"></div>
+        </div>
+        <div id="rus1989">
+            <div class="folium-map" id="map_dd0e055d359805c36e147bec9e5ee4bc"></div>
+        </div>
+        <div id="slo1989">
+            <div class="folium-map" id="map_dc0de8315f5391356feaf50f6b2e7952"></div>
+        </div>
+        <div id="tat1989">
+            <div class="folium-map" id="map_fea83e164123b2dde9b3dd0e14c796a1"></div>
+        </div>
+        <div id="ukr1989">
+            <div class="folium-map" id="map_2488a2de6718fb7e218b7db2b9343d6d"></div>
+        </div>
+        <div id="uzb1989">
+            <div class="folium-map" id="map_ad24f5885eb2e4a5cb77da985295a24b"></div>
+        </div>
+
+        <!-- 1970 maps -->
+        <div id="ukr1979">
+            <div class="folium-map" id="map_fde3c1c833463e5db72d28c1197aadda"></div>
+        </div>
+        <div id="bel1979">
+            <div class="folium-map" id="map_8afb1c09649c9b93fcefacf80c5f7fe8"></div>
+        </div>
+        <div id="bul1979">
+            <div class="folium-map" id="map_bddc1284f6e9f0b62dda5ad4133db380"></div>
+        </div>
+        <div id="gag1979">
+            <div class="folium-map" id="map_6e2e2fc8d229db7beb0915d87512042f"></div>
+        </div>
+        <div id="gre1979">
+            <div class="folium-map" id="map_2a9554514281a5b02f75a098c91a38c1"></div>
+        </div>
+        <div id="hun1979">
+            <div class="folium-map" id="map_ed75934111e17ddc954e1baf0c255566"></div>
+        </div>
+        <div id="jew1979">
+            <div class="folium-map" id="map_cc78b752cae911b620643519f73b4e6a"></div>
+        </div>
+        <div id="kar1979">
+            <div class="folium-map" id="map_6d5e0d9965784fdc0b5002bbe8d67a06"></div>
+        </div>
+        <div id="mol1979">
+            <div class="folium-map" id="map_23f6d1963523b4ac6c8cc433f10527c0"></div>
+        </div>
+        <div id="pol1979">
+            <div class="folium-map" id="map_5b890f5a698e4da63c9f66a7aa56833e"></div>
+        </div>
+        <div id="rom1979">
+            <div class="folium-map" id="map_c70fb34fea15ecbf9f198774c9251f6d"></div>
+        </div>
+        <div id="rus1979">
+            <div class="folium-map" id="map_97f831903a5a974a18a71a7fe7138997"></div>
+        </div>
+        <div id="tat1979">
+            <div class="folium-map" id="map_68268081a730661151eb03ce83fc34af"></div>
+        </div>
+
+        <!-- 1970 maps -->
+        <div id="arm1970">
+            <div class="folium-map" id="map_84d7880b62c908cac146c7c2a1a90d52"></div>
+        </div>
+        <div id="bel1970">
+            <div class="folium-map" id="map_349056249b53c3b10bf2e07df99458e2"></div>
+        </div>
+        <div id="bul1970">
+            <div class="folium-map" id="map_699e6a02c3b226bd6d6a949501a7de36"></div>
+        </div>
+        <div id="chu1970">
+            <div class="folium-map" id="map_b918451a95a9496b00b57b858365b16c"></div>
+        </div>
+        <div id="gag1970">
+            <div class="folium-map" id="map_525b5d458f3d1c958ab45fd472a4c4c0"></div>
+        </div>
+        <div id="gre1970">
+            <div class="folium-map" id="map_d9236c5efaa2b0b2da4d954147f31425"></div>
+        </div>
+        <div id="hun1970">
+            <div class="folium-map" id="map_52e71a8672ace0e96b74a72ee34cb2ff"></div>
+        </div>
+        <div id="jew1970">
+            <div class="folium-map" id="map_0f48893eeca347dd4bdc5911959a19c0"></div>
+        </div>
+        <div id="kar1970">
+            <div class="folium-map" id="map_12b9cc49a89f351eadbdec0154be24cf"></div>
+        </div>
+        <div id="mol1970">
+            <div class="folium-map" id="map_4f876c4ad75827163ccede93a2b7f9d0"></div>
+        </div>
+        <div id="mor1970">
+            <div class="folium-map" id="map_f8a345e1b54999a9da65e406296bfdb1"></div>
+        </div>
+        <div id="pol1970">
+            <div class="folium-map" id="map_458b2214a9fb3cc67640070e0765755c"></div>
+        </div>
+        <div id="gyp1970">
+            <div class="folium-map" id="map_d9bbe96091daf6e8d9c358e7711683f4"></div>
+        </div>
+        <div id="rom1970">
+            <div class="folium-map" id="map_ad12fa948b60f00374c83d22acac19dd"></div>
+        </div>
+        <div id="rus1970">
+            <div class="folium-map" id="map_206c25b63f5990cedee8d60889d548a8"></div>
+        </div>
+        <div id="slo1970">
+            <div class="folium-map" id="map_22216f1858c768ae09afd3126d029112"></div>
+        </div>
+        <div id="tat1970">
+            <div class="folium-map" id="map_5020149c3b69c165cdac5a3f7f9f290a"></div>
+        </div>
+        <div id="ukr1970">
+            <div class="folium-map" id="map_98564c962727a290441d2607c6d55692"></div>
+        </div>
+
+        <!-- 1959 maps -->
+        <div id="bel1959">
+            <div class="folium-map" id="map_51b5cf96674136b3da45f2ee13554846"></div>
+        </div>
+        <div id="bul1959">
+            <div class="folium-map" id="map_dfb759433018496b0f76e055ee04d68e"></div>
+        </div>
+        <div id="gag1959">
+            <div class="folium-map" id="map_fde02dda9fff7d50500dc1b592598693"></div>
+        </div>
+        <div id="gre1959">
+            <div class="folium-map" id="map_0944a7c3f8e880275fc46914c901602e"></div>
+        </div>
+        <div id="hun1959">
+            <div class="folium-map" id="map_463d72bb95917d782d86aa769af7e044"></div>
+        </div>
+        <div id="jew1959">
+            <div class="folium-map" id="map_4b0be4cd4352d8f95a7cb946b5ecd74f"></div>
+        </div>
+        <div id="mol1959">
+            <div class="folium-map" id="map_e14df29a6bb8277a25811352791d6bfd"></div>
+        </div>
+        <div id="pol1959">
+            <div class="folium-map" id="map_3975fb39d6b586000507c2163c1d28cd"></div>
+        </div>
+        <div id="gyp1959">
+            <div class="folium-map" id="map_c4307bd7318decb1315cc6591536a277"></div>
+        </div>
+        <div id="rom1959">
+            <div class="folium-map" id="map_d1d68166be98f99b876cbe6471b29cad"></div>
+        </div>
+        <div id="rus1959">
+            <div class="folium-map" id="map_b9d0b1f5375a4b2f5c51d2949726b7f7"></div>
+        </div>
+        <div id="slo1959">
+            <div class="folium-map" id="map_51f12d8010fa28408d3c01a566a7b67e"></div>
+        </div>
+        <div id="tat1959">
+            <div class="folium-map" id="map_116a65eb5bdfe55a25cd3ede0224ea95"></div>
+        </div>
+        <div id="ukr1959">
+            <div class="folium-map" id="map_30f8a4b361a47a620318102a1a1ef893"></div>
+        </div>
+
+        <!-- 1927 maps -->
+        <div id="arm1927">
+            <div class="folium-map" id="map_7390ecc6050c2c86d58273c4d76cabb2"></div>
+        </div>
+        <div id="bel1927">
+            <div class="folium-map" id="map_061749b35ef271a5d44b090621feb28c"></div>
+        </div>
+        <div id="bul1927">
+            <div class="folium-map" id="map_d83dd6ee452fbb54f2ee0cf23d5615a2"></div>
+        </div>
+        <div id="cri1927">
+            <div class="folium-map" id="map_1e3346aa5ed9d0aabc1682838074663e"></div>
+        </div>
+        <div id="czs1927">
+            <div class="folium-map" id="map_5af201dd990c7b20f9049888f3eff779"></div>
+        </div>
+        <div id="ger1927">
+            <div class="folium-map" id="map_7316974ce813a403e535bf68adff022a"></div>
+        </div>
+        <div id="gre1927">
+            <div class="folium-map" id="map_6d953ac2c33e81e7991101310e6994b5"></div>
+        </div>
+        <div id="hun1927">
+            <div class="folium-map" id="map_b7c9ad8b016b44c191b392fb5424a0a4"></div>
+        </div>
+        <div id="jew1927">
+            <div class="folium-map" id="map_0239eb14e8fbf812ff6615bcdf222dcf"></div>
+        </div>
+        <div id="lat1927">
+            <div class="folium-map" id="map_1ed9b6aa021c2bd9f1a04e047943cdd4"></div>
+        </div>
+        <div id="lit1927">
+            <div class="folium-map" id="map_a2cf69216e67e41c71ea90d2c977cf7d"></div>
+        </div>
+        <div id="mol1927">
+            <div class="folium-map" id="map_59396dc08b544d3e418a929e33e9c5fe"></div>
+        </div>
+        <div id="pol1927">
+            <div class="folium-map" id="map_c672b45a9a1fdd798e7656250d8b5359"></div>
+        </div>
+        <div id="gyp1927">
+            <div class="folium-map" id="map_b93ec8e6bcc9669b3a1e5b13a5ec668d"></div>
+        </div>
+        <div id="rus1927">
+            <div class="folium-map" id="map_97e603fa2e3fad8df8d97bff13fe8f75"></div>
+        </div>
+        <div id="tat1927">
+            <div class="folium-map" id="map_ab1d27a7e80253a0ed016b1700aba24b"></div>
+        </div>
+        <div id="ukr1927">
+            <div class="folium-map" id="map_80a0a8e548c6cc801207dac787e17c3b"></div>
+        </div>
+
+        <!-- 1910 maps -->
+        <div id="arm1910">
+            <div class="folium-map" id="map_4b57ed78aaf85580048547c172039df4"></div>
+        </div>
+        <div id="bel1910">
+            <div class="folium-map" id="map_158dc2d1f44baa16622214faf4b14a8b"></div>
+        </div>
+        <div id="bul1910">
+            <div class="folium-map" id="map_a3bcbaaf643506ad142ad9324785de20"></div>
+        </div>
+        <div id="cze1910">
+            <div class="folium-map" id="map_e7ada59769aba84b2e1ef7fe00504cf3"></div>
+        </div>
+        <div id="ger1910">
+            <div class="folium-map" id="map_d506cf733dd06e4198a7cfe8da8d84be"></div>
+        </div>
+        <div id="gre1910">
+            <div class="folium-map" id="map_ac9cac9a72027dc3ad5a89fb25eae3d9"></div>
+        </div>
+        <div id="mol1910">
+            <div class="folium-map" id="map_e4ab9376bc8aab329cc35f4b8c46f770"></div>
+        </div>
+        <div id="pol1910">
+            <div class="folium-map" id="map_a12773ceab6b6fee8ef25b62265fae37"></div>
+        </div>
+        <div id="gyp1910">
+            <div class="folium-map" id="map_1b499cc3d05530dcba612943e572d8fb"></div>
+        </div>
+        <div id="rus1910">
+            <div class="folium-map" id="map_820b33d07252cbf77c64535b07f89993"></div>
+        </div>
+        <div id="tat1910">
+            <div class="folium-map" id="map_63e776b154e7088f758ebec3baf327a4"></div>
+        </div>
+        <div id="jew1910">
+            <div class="folium-map" id="map_67ce28b15b4984ee32936e61d79427a5"></div>
+        </div>
+        <div id="ukr1910">
+            <div class="folium-map" id="map_0ac0fe9eaccda7f8b7515cf3e9baa31a"></div>
+        </div>
+
     </div>
+
+    <div class="logo-container" id="logo-left">
+        <img src="images/logoBasees.jpg" class="logo"></img>
+    </div>
+    <div class="logo-container" id="logo-right">
+        <img src="images/logoUSG.svg" class="logo"></img>
+    </div>
+
 </body>
 
 <script src="changeMaps.js"></script>
-<script src="ukraine1.js"></script>
-<script src="ukraine2.js"></script>
+<script src="infoPopup.js"></script>
+
+<!-- 2001 maps -->
+<script src="maps2001/armenians.js"></script>
+<script src="maps2001/azerbaijani.js"></script>
+<script src="maps2001/belarusians.js"></script>
+<script src="maps2001/bulgarians.js"></script>
+<script src="maps2001/crimean_tatars.js"></script>
+<script src="maps2001/gagauz_people.js"></script>
+<script src="maps2001/georgians.js"></script>
+<script src="maps2001/germans.js"></script>
+<script src="maps2001/greeks.js"></script>
+<script src="maps2001/hungarians.js"></script>
+<script src="maps2001/moldovans.js"></script>
+<script src="maps2001/poles.js"></script>
+<script src="maps2001/roma.js"></script>
+<script src="maps2001/romanians.js"></script>
+<script src="maps2001/russians.js"></script>
+<script src="maps2001/slovaks.js"></script>
+<script src="maps2001/tatars.js"></script>
+<script src="maps2001/ukrainians.js"></script>
+
+<!-- 1989 maps -->
+<script src="maps1989/albanians.js"></script>
+<script src="maps1989/armenians.js"></script>
+<script src="maps1989/azerbaijani.js"></script>
+<script src="maps1989/belarusians.js"></script>
+<script src="maps1989/bulgarians.js"></script>
+<script src="maps1989/chuvashi.js"></script>
+<script src="maps1989/crimean_tatars.js"></script>
+<script src="maps1989/czechs.js"></script>
+<script src="maps1989/gagauzes.js"></script>
+<script src="maps1989/georgians.js"></script>
+<script src="maps1989/germans.js"></script>
+<script src="maps1989/greeks.js"></script>
+<script src="maps1989/hungarians.js"></script>
+<script src="maps1989/jews.js"></script>
+<script src="maps1989/koreans.js"></script>
+<script src="maps1989/mari.js"></script>
+<script src="maps1989/moldovans.js"></script>
+<script src="maps1989/mordvins.js"></script>
+<script src="maps1989/poles.js"></script>
+<script src="maps1989/gypsy.js"></script>
+<script src="maps1989/romanians.js"></script>
+<script src="maps1989/russians.js"></script>
+<script src="maps1989/slovaks.js"></script>
+<script src="maps1989/tatars.js"></script>
+<script src="maps1989/ukrainians.js"></script>
+<script src="maps1989/uzbeks.js"></script>
+<script src="maps1989/ukraine2.js"></script>
+
+<!-- 1979 maps -->
+<script src="maps1979/ukrainians.js"></script>
+<script src="maps1979/belarusians.js"></script>
+<script src="maps1979/bulgarians.js"></script>
+<script src="maps1979/gagauzs.js"></script>
+<script src="maps1979/greeks.js"></script>
+<script src="maps1979/hungarians.js"></script>
+<script src="maps1979/jews.js"></script>
+<script src="maps1979/karaites.js"></script>
+<script src="maps1979/moldovans.js"></script>
+<script src="maps1979/poles.js"></script>
+<script src="maps1979/romanians.js"></script>
+<script src="maps1979/russians.js"></script>
+<script src="maps1979/tatars.js"></script>
+
+<!-- 1970 maps -->
+<script src="maps1970/armenians.js"></script>
+<script src="maps1970/belarusians.js"></script>
+<script src="maps1970/bulgarians.js"></script>
+<script src="maps1970/chuvashi.js"></script>
+<script src="maps1970/gagauzes.js"></script>
+<script src="maps1970/greeks.js"></script>
+<script src="maps1970/hungarians.js"></script>
+<script src="maps1970/jews.js"></script>
+<script src="maps1970/karaites.js"></script>
+<script src="maps1970/moldovans.js"></script>
+<script src="maps1970/mordvins.js"></script>
+<script src="maps1970/poles.js"></script>
+<script src="maps1970/gypsy.js"></script>
+<script src="maps1970/romanians.js"></script>
+<script src="maps1970/russians.js"></script>
+<script src="maps1970/slovaks.js"></script>
+<script src="maps1970/tatars.js"></script>
+<script src="maps1970/ukrainians.js"></script>
+
+<!-- 1959 maps -->
+<script src="maps1959/belarusians.js"></script>
+<script src="maps1959/bulgarians.js"></script>
+<script src="maps1959/gagauzes.js"></script>
+<script src="maps1959/greeks.js"></script>
+<script src="maps1959/hungarians.js"></script>
+<script src="maps1959/jews.js"></script>
+<script src="maps1959/moldovans.js"></script>
+<script src="maps1959/poles.js"></script>
+<script src="maps1959/gypsy.js"></script>
+<script src="maps1959/romanians.js"></script>
+<script src="maps1959/russians.js"></script>
+<script src="maps1959/slovaks.js"></script>
+<script src="maps1959/tatars.js"></script>
+<script src="maps1959/ukrainians.js"></script>
+
+<!-- 1927 maps -->
+<script src="maps1927/ukrainians.js"></script>
+<script src="maps1927/armenians.js"></script>
+<script src="maps1927/belarusians.js"></script>
+<script src="maps1927/bulgarians.js"></script>
+<script src="maps1927/crimean_tatars.js"></script>
+<script src="maps1927/czechs_and_slovaks.js"></script>
+<script src="maps1927/germans.js"></script>
+<script src="maps1927/greeks.js"></script>
+<script src="maps1927/hungarians.js"></script>
+<script src="maps1927/jews.js"></script>
+<script src="maps1927/latvians.js"></script>
+<script src="maps1927/lithuanians.js"></script>
+<script src="maps1927/moldovans.js"></script>
+<script src="maps1927/poles.js"></script>
+<script src="maps1927/roma.js"></script>
+<script src="maps1927/russians.js"></script>
+<script src="maps1927/tatars.js"></script>
+
+<!-- 1910 maps -->
+<script src="maps1910/armenians.js"></script>
+<script src="maps1910/belarusians.js"></script>
+<script src="maps1910/bulgarians.js"></script>
+<script src="maps1910/czechs.js"></script>
+<script src="maps1910/germans.js"></script>
+<script src="maps1910/greeks.js"></script>
+<script src="maps1910/moldovans.js"></script>
+<script src="maps1910/polish.js"></script>
+<script src="maps1910/gypsy.js"></script>
+<script src="maps1910/russians.js"></script>
+<script src="maps1910/tatars.js"></script>
+<script src="maps1910/jews.js"></script>
+<script src="maps1910/ukrainians.js"></script>

@@ -1,0 +1,79 @@
+.overlay {
+    position:absolute;
+    display:none;
+
+    /* color with alpha transparency */
+    background-color: rgba(0, 0, 0, 0.3);
+
+    /* stretch to screen edges */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 500;
+}
+:root{
+    --popupWidth: 80%;
+    --popupHeight: 80%;
+}
+.popup {
+    position: absolute;
+    padding: 0px 50px 0px 50px;
+    display: none;
+    background-color: black;
+    color: white;
+    z-index: 1000;
+    border-radius: 10%;
+    border-style: groove;
+
+    overflow: auto;
+    align-items: center;
+
+    /* center it ? */
+    width: var(--popupWidth);
+    top: calc((100% - var(--popupHeight)) / 2);
+    bottom: calc((100% - var(--popupHeight)) / 2);
+    left: calc((100% - var(--popupWidth)) / 2);
+    right: calc((100% - var(--popupWidth)) / 2);
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
+.popup-content{
+    padding-top: 10px;
+    font-family: "Century Gothic";
+}
+
+#general-info {
+    position: absolute;
+    display: none;
+    background-color: black;
+    color: white;
+    z-index: 1000;
+    overflow: auto;
+    padding: 50px 100px 50px 100px;
+    font-family: Garamond;
+    font-size: 16px;
+
+    width: 100%;
+    height: 100%;
+}
+
+.close-icon {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(256deg) brightness(107%) contrast(101%);
+}
+
+.close-icon:hover {
+    cursor: pointer;
+    /*filter: invert(91%) sepia(0%) saturate(4440%) hue-rotate(105deg) brightness(86%) contrast(86%);*/
+    filter: invert(97%) sepia(6%) saturate(36%) hue-rotate(169deg) brightness(91%) contrast(90%);
+}

@@ -1,0 +1,193 @@
+/* The sidepanel menu */
+:root {
+    --navHeight: 49px;
+}
+.sidepanel {
+    height: 550px; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+/* The sidepanel links */
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#infoSidepanel {
+    left: auto;
+    right: 0;
+}
+
+#hiddenText {
+    color: #f1f1f1;
+    padding: 10px 10px 10px 10px;
+}
+
+/*#infoSidepanel .closebtn {*/
+/*    top: var(--navHeight);*/
+/*    right: auto;*/
+/*    margin-left: 0;*/
+/*    left: 0;*/
+/*    text-align: center;*/
+/*    width: 50px;*/
+/*    padding: 0px 0px 0px 0px;*/
+/*}*/
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+.infobtn {
+    position: fixed;
+    right: 0;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    font-family: "Lucida Console", "Courier New", monospace;;
+}
+
+.infobtn:hover {
+    background-color: #444;
+}
+
+.dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+.dropdown-btn:hover {
+    color: #f1f1f1;
+}
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    background-color: #262626;
+    padding-left: 8px;
+}
+
+#nation {
+    display: none;
+}
+#nation a {
+    font-size: 16px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
+}
+
+body {
+    background-color: silver;
+    min-width: 1000px;
+    width: auto !important;
+}
+:root {
+    --navHeight: 49px;
+}
+#my-map {
+    margin-top: var(--navHeight);
+    display: flex;
+    justify-content: center;
+    /*float: left;*/
+}
+#year-info {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    right: 0px;
+    width: 230px;
+    height: 100%;
+    z-index: 100;
+    background-color: #f1f1f1;
+}
+
+.top-bar {
+    opacity: 1 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 600px;
+    height: var(--navHeight);
+    z-index: 50;
+    background-color: black;
+}
+/*div.top-bar {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: var(--navHeight);*/
+/*    z-index: 1;*/
+/*}*/
+.top-bar span {
+    font-size: 16px;
+    color: white;
+}
+:root{
+    --margin: 10px;
+}
+#start {
+    margin-left: var(--margin);
+    margin-right: var(--margin);
+}
+.delimiter {
+    /*font-size: 24px;*/
+    font-weight: bold;
+    margin-right: var(--margin);
+}
+.top-bar-btn-name {
+    cursor: pointer;
+    margin-right: var(--margin);
+}
+.top-bar-btn-name:hover {
+    color: #00b68b !important;
+}
