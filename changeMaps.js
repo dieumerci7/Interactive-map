@@ -87,11 +87,11 @@ function hideAll() {
     for (let i = 0; i < ids1959.length; i++) {
         $(ids1959[i]).hide()
     }
-    let ids1927 = ['#arm1927', '#bel1927', '#bul1927', '#cri1927', '#czs1927',
-        '#ger1927', '#gre1927', '#hun1927', '#jew1927', '#lat1927', '#lit1927',
-        '#mol1927', '#pol1927', '#gyp1927', '#rus1927', '#tat1927', '#ukr1927']
-    for (let i = 0; i < ids1927.length; i++) {
-        $(ids1927[i]).hide()
+    let ids1931 = ['#arm1931', '#bel1931', '#bul1931', '#cri1931', '#czs1931',
+        '#ger1931', '#gre1931', '#hun1931', '#jew1931', '#lat1931', '#lit1931',
+        '#mol1931', '#pol1931', '#gyp1931', '#rus1931', '#tat1931', '#ukr1931']
+    for (let i = 0; i < ids1931.length; i++) {
+        $(ids1931[i]).hide()
     }
     let ids1910 = ['#arm1910', '#bel1910', '#bul1910', '#cze1910', '#ger1910', '#gre1910',
         '#mol1910', '#pol1910', '#gyp1910', '#rus1910', '#tat1910', '#jew1910', '#ukr1910']
@@ -146,7 +146,7 @@ function closeInfoNav() {
 }
 
 function setYearStylesToNormal() {
-    let years = ['2001', '1989', '1979', '1970', '1959', '1927', '1910']
+    let years = ['2001', '1989', '1979', '1970', '1959', '1931', '1910']
     for (let i = 0; i < years.length; i++) {
         document.getElementById(years[i]).style.fontWeight = "normal";
         $("#" + years[i]).css("text-decoration", "none")
@@ -241,11 +241,11 @@ function showNationsByYear(year) {
                 $('#' + ids2001[i]).show()
             }
             break;
-        case 1927:
-            let ids1927 = ['arm', 'bel', 'bul', 'cri', 'czs', 'ger', 'gre', 'hun',
+        case 1931:
+            let ids1931 = ['arm', 'bel', 'bul', 'cri', 'czs', 'ger', 'gre', 'hun',
                 'jew', 'lat', 'lit', 'mol', 'pol', 'gyp', 'rus', 'tat', 'ukr'];
-            for (let i = 0; i < ids1927.length; i++) {
-                $('#' + ids1927[i]).show()
+            for (let i = 0; i < ids1931.length; i++) {
+                $('#' + ids1931[i]).show()
             }
     }
 }
@@ -330,6 +330,7 @@ function rerenderMap() {
     else if(curYear === 1989) {
         switch (curNation) {
             case "alb":
+                $.getScript("Maps/maps1989/albanians.js")
                 $('#alb1989').show()
                 map_1f4ba356da92d43a9220fd85760b090f.invalidateSize()
                 break;
@@ -632,74 +633,74 @@ function rerenderMap() {
                 map_30f8a4b361a47a620318102a1a1ef893.invalidateSize()
         }
     }
-    else if (curYear == 1927) {
+    else if (curYear === 1931) {
         switch (curNation) {
             case "arm":
-                $('#arm1927').show()
+                $('#arm1931').show()
                 map_7390ecc6050c2c86d58273c4d76cabb2.invalidateSize()
                 break;
             case "bel":
-                $('#bel1927').show()
+                $('#bel1931').show()
                 map_061749b35ef271a5d44b090621feb28c.invalidateSize()
                 break;
             case "bul":
-                $('#bul1927').show()
+                $('#bul1931').show()
                 map_d83dd6ee452fbb54f2ee0cf23d5615a2.invalidateSize()
                 break;
             case "cri":
-                $('#cri1927').show()
+                $('#cri1931').show()
                 map_1e3346aa5ed9d0aabc1682838074663e.invalidateSize()
                 break;
             case "czs":
-                $('#czs1927').show()
+                $('#czs1931').show()
                 map_5af201dd990c7b20f9049888f3eff779.invalidateSize()
                 break;
             case "ger":
-                $('#ger1927').show()
+                $('#ger1931').show()
                 map_7316974ce813a403e535bf68adff022a.invalidateSize()
                 break;
             case "gre":
-                $('#gre1927').show()
+                $('#gre1931').show()
                 map_6d953ac2c33e81e7991101310e6994b5.invalidateSize()
                 break;
             case "hun":
-                $('#hun1927').show()
+                $('#hun1931').show()
                 map_b7c9ad8b016b44c191b392fb5424a0a4.invalidateSize()
                 break;
             case "jew":
-                $('#jew1927').show()
+                $('#jew1931').show()
                 map_0239eb14e8fbf812ff6615bcdf222dcf.invalidateSize()
                 break;
             case "lat":
-                $('#lat1927').show()
+                $('#lat1931').show()
                 map_1ed9b6aa021c2bd9f1a04e047943cdd4.invalidateSize()
                 break;
             case "lit":
-                $('#lit1927').show()
+                $('#lit1931').show()
                 map_a2cf69216e67e41c71ea90d2c977cf7d.invalidateSize()
                 break;
             case "mol":
-                $('#mol1927').show()
+                $('#mol1931').show()
                 map_59396dc08b544d3e418a929e33e9c5fe.invalidateSize()
                 break;
             case "pol":
-                $('#pol1927').show()
+                $('#pol1931').show()
                 map_c672b45a9a1fdd798e7656250d8b5359.invalidateSize()
                 break;
             case "gyp":
-                $('#gyp1927').show()
+                $('#gyp1931').show()
                 map_b93ec8e6bcc9669b3a1e5b13a5ec668d.invalidateSize()
                 break;
             case "rus":
-                $('#rus1927').show()
+                $('#rus1931').show()
                 map_97e603fa2e3fad8df8d97bff13fe8f75.invalidateSize()
                 break;
             case "tat":
-                $('#tat1927').show()
+                $('#tat1931').show()
                 map_ab1d27a7e80253a0ed016b1700aba24b.invalidateSize()
                 break;
             default:
-                $('#ukr1927').show()
+                $('#ukr1931').show()
                 map_80a0a8e548c6cc801207dac787e17c3b.invalidateSize()
         }
     }
