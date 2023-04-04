@@ -191,3 +191,28 @@ body {
 .top-bar-btn-name:hover {
     color: #00b68b !important;
 }
+
+.about-us {
+    position: fixed;
+    right: 75px;
+    top: 10px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+
+    filter: invert(100%) sepia(0%) saturate(14%) hue-rotate(243deg) brightness(105%) contrast(103%);
+}
+
+.about-us:hover {
+    filter: invert(56%) sepia(97%) saturate(2255%) hue-rotate(127deg) brightness(88%) contrast(105%);
+}
+
+#info-type-seperator {
+    position: fixed;
+    top: 13px;
+    right: 35px;
+    width: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}

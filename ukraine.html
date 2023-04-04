@@ -95,6 +95,8 @@
         <span class = "top-bar-btn-name" id="1931" onclick="yearChange(id)">1931</span>
         <span class = "delimiter">|</span>
         <span class = "top-bar-btn-name" id="1910" onclick="yearChange(id)">1910</span>
+        <img class="about-us" src="./images/info_icon.png" onclick="generalInfoRequest()" alt="Stakeholders - Information Symbol @clipartmax.com">
+        <div id="info-type-seperator" class = "delimiter">|</div>
         <button class="infobtn" onclick="infoRequest()">?</button>
     </div>
 
@@ -120,9 +122,9 @@
 
         <span style="font-size: 24px"><b>TEAM</b></span><br>
 
-        <b>COORDINATORS</b>: <a href='#'>Olena Palko</a>, and <a href='#'>Albert Venger</a><br>
+        <b>COORDINATORS</b>: <a target="_blank" href='https://dg.philhist.unibas.ch/de/personen/olena-palko/'>Olena Palko</a>, and <a target="_blank" href='http://www.dnu-history.com.ua/histworld/venger-albert-grigorovich/'>Albert Venher</a><br>
 
-        Research Team: Olha Kakovkina, Tetiana Portnova, Yevhenia Venger, Anna Umanska, and Serhii Hladyshuk<br>
+        Research Team: Olha Kakovkina, Tetiana Portnova, Yevhenia Venher, Anna Umanska, and Serhii Hladyshuk<br>
 
         Web-developers: Yur-Liubomysl Dekhtiar, and Bohdan-Yarema Dekhtiar<br><br>
 
@@ -132,20 +134,24 @@
 
         <span style="font-size: 24px"><b>LEGAL INFORMATION</b></span><br>
 
-        © 2021–2023 <a href="https://gce.unisg.ch/en">Center for Governance and Culture in Europe</a> | <a href="https://www.unisg.ch/en">General legal information</a> | <a href="https://www.unisg.ch/en/appconfig/footer/datenschutz">Data privacy statement</a><br><br>
+        © 2021–2023 <a target="_blank" href="https://gce.unisg.ch/en">Center for Governance and Culture in Europe</a><br><br>
 
         <span style="font-size: 24px"><b>DATA SOURCES</b></span><br>
 
         Some of the country shapefiles were created using the following data sources:<br>
         <ul>
-            <li><a href="https://www.naturalearthdata.com/">Natural Earth</a> (Europe 2023)</li>
-            <li><a href="https://gis.huri.harvard.edu/ethnic-composition">Mapa. Digital Atlas of Ukraine</a>. Harvard Ukrainian Research Institute</li>
-            <li><a href="https://purl.stanford.edu/pp624tm0074">Administrative Divisions, Ukraine, 2015</a>. Berkeley, CA, US: University of California, Berkeley. Museum of Vertebrate Zoology, 2015</li>
+            <li><a target="_blank" href="https://www.naturalearthdata.com/">Natural Earth</a> (Europe 2023)</li>
+            <li><a target="_blank" href="https://gis.huri.harvard.edu/ethnic-composition">Mapa. Digital Atlas of Ukraine</a>. Harvard Ukrainian Research Institute</li>
+            <li><a target="_blank" href="https://purl.stanford.edu/pp624tm0074">Administrative Divisions, Ukraine, 2015</a>. Berkeley, CA, US: University of California, Berkeley. Museum of Vertebrate Zoology, 2015</li>
         </ul><br><br>
 
         <span style="font-size: 24px"><b>CONTACT</b></span><br>
 
         sgmh.basees [at] gmail.com<br>
+
+        <div id="logo-basees">
+            <img src="images/logoBasees.jpg" class="logo"></img>
+        </div>
     </div>
 
     <div id="my-map">
@@ -528,9 +534,6 @@
 
     </div>
 
-    <div class="logo-container" id="logo-left">
-        <img src="images/logoBasees.jpg" class="logo"></img>
-    </div>
     <div class="logo-container" id="logo-right">
         <img src="images/logoUSG.svg" class="logo"></img>
     </div>
@@ -540,136 +543,136 @@
 <script src="changeMaps.js"></script>
 <script src="infoPopup.js"></script>
 
-<!-- 2001 maps -->
-<script src="Maps/maps2001/armenians.js"></script>
-<script src="Maps/maps2001/azerbaijani.js"></script>
-<script src="Maps/maps2001/belarusians.js"></script>
-<script src="Maps/maps2001/bulgarians.js"></script>
-<script src="Maps/maps2001/crimean_tatars.js"></script>
-<script src="Maps/maps2001/gagauz_people.js"></script>
-<script src="Maps/maps2001/georgians.js"></script>
-<script src="Maps/maps2001/germans.js"></script>
-<script src="Maps/maps2001/greeks.js"></script>
-<script src="Maps/maps2001/hungarians.js"></script>
-<script src="Maps/maps2001/moldovans.js"></script>
-<script src="Maps/maps2001/poles.js"></script>
-<script src="Maps/maps2001/roma.js"></script>
-<script src="Maps/maps2001/romanians.js"></script>
-<script src="Maps/maps2001/russians.js"></script>
-<script src="Maps/maps2001/slovaks.js"></script>
-<script src="Maps/maps2001/tatars.js"></script>
-<script src="Maps/maps2001/ukrainians.js"></script>
+<!--&lt;!&ndash; 2001 maps &ndash;&gt;-->
+<!--<script src="Maps/maps2001/armenians.js"></script>-->
+<!--<script src="Maps/maps2001/azerbaijani.js"></script>-->
+<!--<script src="Maps/maps2001/belarusians.js"></script>-->
+<!--<script src="Maps/maps2001/bulgarians.js"></script>-->
+<!--<script src="Maps/maps2001/crimean_tatars.js"></script>-->
+<!--<script src="Maps/maps2001/gagauz_people.js"></script>-->
+<!--<script src="Maps/maps2001/georgians.js"></script>-->
+<!--<script src="Maps/maps2001/germans.js"></script>-->
+<!--<script src="Maps/maps2001/greeks.js"></script>-->
+<!--<script src="Maps/maps2001/hungarians.js"></script>-->
+<!--<script src="Maps/maps2001/moldovans.js"></script>-->
+<!--<script src="Maps/maps2001/poles.js"></script>-->
+<!--<script src="Maps/maps2001/roma.js"></script>-->
+<!--<script src="Maps/maps2001/romanians.js"></script>-->
+<!--<script src="Maps/maps2001/russians.js"></script>-->
+<!--<script src="Maps/maps2001/slovaks.js"></script>-->
+<!--<script src="Maps/maps2001/tatars.js"></script>-->
+<!--<script src="Maps/maps2001/ukrainians.js"></script>-->
 
-<!-- 1989 maps -->
-<!--<script src="maps1989/albanians.js"></script>-->
-<script src="Maps/maps1989/armenians.js"></script>
-<script src="Maps/maps1989/azerbaijani.js"></script>
-<script src="Maps/maps1989/belarusians.js"></script>
-<script src="Maps/maps1989/bulgarians.js"></script>
-<script src="Maps/maps1989/chuvashi.js"></script>
-<script src="Maps/maps1989/crimean_tatars.js"></script>
-<script src="Maps/maps1989/czechs.js"></script>
-<script src="Maps/maps1989/gagauzes.js"></script>
-<script src="Maps/maps1989/georgians.js"></script>
-<script src="Maps/maps1989/germans.js"></script>
-<script src="Maps/maps1989/greeks.js"></script>
-<script src="Maps/maps1989/hungarians.js"></script>
-<script src="Maps/maps1989/jews.js"></script>
-<script src="Maps/maps1989/koreans.js"></script>
-<script src="Maps/maps1989/mari.js"></script>
-<script src="Maps/maps1989/moldovans.js"></script>
-<script src="Maps/maps1989/mordvins.js"></script>
-<script src="Maps/maps1989/poles.js"></script>
-<script src="Maps/maps1989/gypsy.js"></script>
-<script src="Maps/maps1989/romanians.js"></script>
-<script src="Maps/maps1989/russians.js"></script>
-<script src="Maps/maps1989/slovaks.js"></script>
-<script src="Maps/maps1989/tatars.js"></script>
-<script src="Maps/maps1989/ukrainians.js"></script>
-<script src="Maps/maps1989/uzbeks.js"></script>
-<script src="Maps/maps1989/ukraine2.js"></script>
+<!--&lt;!&ndash; 1989 maps &ndash;&gt;-->
+<!--&lt;!&ndash;<script src="maps1989/albanians.js"></script>&ndash;&gt;-->
+<!--<script src="Maps/maps1989/armenians.js"></script>-->
+<!--<script src="Maps/maps1989/azerbaijani.js"></script>-->
+<!--<script src="Maps/maps1989/belarusians.js"></script>-->
+<!--<script src="Maps/maps1989/bulgarians.js"></script>-->
+<!--<script src="Maps/maps1989/chuvashi.js"></script>-->
+<!--<script src="Maps/maps1989/crimean_tatars.js"></script>-->
+<!--<script src="Maps/maps1989/czechs.js"></script>-->
+<!--<script src="Maps/maps1989/gagauzes.js"></script>-->
+<!--<script src="Maps/maps1989/georgians.js"></script>-->
+<!--<script src="Maps/maps1989/germans.js"></script>-->
+<!--<script src="Maps/maps1989/greeks.js"></script>-->
+<!--<script src="Maps/maps1989/hungarians.js"></script>-->
+<!--<script src="Maps/maps1989/jews.js"></script>-->
+<!--<script src="Maps/maps1989/koreans.js"></script>-->
+<!--<script src="Maps/maps1989/mari.js"></script>-->
+<!--<script src="Maps/maps1989/moldovans.js"></script>-->
+<!--<script src="Maps/maps1989/mordvins.js"></script>-->
+<!--<script src="Maps/maps1989/poles.js"></script>-->
+<!--<script src="Maps/maps1989/gypsy.js"></script>-->
+<!--<script src="Maps/maps1989/romanians.js"></script>-->
+<!--<script src="Maps/maps1989/russians.js"></script>-->
+<!--<script src="Maps/maps1989/slovaks.js"></script>-->
+<!--<script src="Maps/maps1989/tatars.js"></script>-->
+<!--<script src="Maps/maps1989/ukrainians.js"></script>-->
+<!--<script src="Maps/maps1989/uzbeks.js"></script>-->
+<!--<script src="Maps/maps1989/ukraine2.js"></script>-->
 
-<!-- 1979 maps -->
-<script src="Maps/maps1979/ukrainians.js"></script>
-<script src="Maps/maps1979/belarusians.js"></script>
-<script src="Maps/maps1979/bulgarians.js"></script>
-<script src="Maps/maps1979/gagauzs.js"></script>
-<script src="Maps/maps1979/greeks.js"></script>
-<script src="Maps/maps1979/hungarians.js"></script>
-<script src="Maps/maps1979/jews.js"></script>
-<script src="Maps/maps1979/karaites.js"></script>
-<script src="Maps/maps1979/moldovans.js"></script>
-<script src="Maps/maps1979/poles.js"></script>
-<script src="Maps/maps1979/romanians.js"></script>
-<script src="Maps/maps1979/russians.js"></script>
-<script src="Maps/maps1979/tatars.js"></script>
+<!--&lt;!&ndash; 1979 maps &ndash;&gt;-->
+<!--<script src="Maps/maps1979/ukrainians.js"></script>-->
+<!--<script src="Maps/maps1979/belarusians.js"></script>-->
+<!--<script src="Maps/maps1979/bulgarians.js"></script>-->
+<!--<script src="Maps/maps1979/gagauzs.js"></script>-->
+<!--<script src="Maps/maps1979/greeks.js"></script>-->
+<!--<script src="Maps/maps1979/hungarians.js"></script>-->
+<!--<script src="Maps/maps1979/jews.js"></script>-->
+<!--<script src="Maps/maps1979/karaites.js"></script>-->
+<!--<script src="Maps/maps1979/moldovans.js"></script>-->
+<!--<script src="Maps/maps1979/poles.js"></script>-->
+<!--<script src="Maps/maps1979/romanians.js"></script>-->
+<!--<script src="Maps/maps1979/russians.js"></script>-->
+<!--<script src="Maps/maps1979/tatars.js"></script>-->
 
-<!-- 1970 maps -->
-<script src="Maps/maps1970/armenians.js"></script>
-<script src="Maps/maps1970/belarusians.js"></script>
-<script src="Maps/maps1970/bulgarians.js"></script>
-<script src="Maps/maps1970/chuvashi.js"></script>
-<script src="Maps/maps1970/gagauzes.js"></script>
-<script src="Maps/maps1970/greeks.js"></script>
-<script src="Maps/maps1970/hungarians.js"></script>
-<script src="Maps/maps1970/jews.js"></script>
-<script src="Maps/maps1970/karaites.js"></script>
-<script src="Maps/maps1970/moldovans.js"></script>
-<script src="Maps/maps1970/mordvins.js"></script>
-<script src="Maps/maps1970/poles.js"></script>
-<script src="Maps/maps1970/gypsy.js"></script>
-<script src="Maps/maps1970/romanians.js"></script>
-<script src="Maps/maps1970/russians.js"></script>
-<script src="Maps/maps1970/slovaks.js"></script>
-<script src="Maps/maps1970/tatars.js"></script>
-<script src="Maps/maps1970/ukrainians.js"></script>
+<!--&lt;!&ndash; 1970 maps &ndash;&gt;-->
+<!--<script src="Maps/maps1970/armenians.js"></script>-->
+<!--<script src="Maps/maps1970/belarusians.js"></script>-->
+<!--<script src="Maps/maps1970/bulgarians.js"></script>-->
+<!--<script src="Maps/maps1970/chuvashi.js"></script>-->
+<!--<script src="Maps/maps1970/gagauzes.js"></script>-->
+<!--<script src="Maps/maps1970/greeks.js"></script>-->
+<!--<script src="Maps/maps1970/hungarians.js"></script>-->
+<!--<script src="Maps/maps1970/jews.js"></script>-->
+<!--<script src="Maps/maps1970/karaites.js"></script>-->
+<!--<script src="Maps/maps1970/moldovans.js"></script>-->
+<!--<script src="Maps/maps1970/mordvins.js"></script>-->
+<!--<script src="Maps/maps1970/poles.js"></script>-->
+<!--<script src="Maps/maps1970/gypsy.js"></script>-->
+<!--<script src="Maps/maps1970/romanians.js"></script>-->
+<!--<script src="Maps/maps1970/russians.js"></script>-->
+<!--<script src="Maps/maps1970/slovaks.js"></script>-->
+<!--<script src="Maps/maps1970/tatars.js"></script>-->
+<!--<script src="Maps/maps1970/ukrainians.js"></script>-->
 
-<!-- 1959 maps -->
-<script src="Maps/maps1959/belarusians.js"></script>
-<script src="Maps/maps1959/bulgarians.js"></script>
-<script src="Maps/maps1959/gagauzes.js"></script>
-<script src="Maps/maps1959/greeks.js"></script>
-<script src="Maps/maps1959/hungarians.js"></script>
-<script src="Maps/maps1959/jews.js"></script>
-<script src="Maps/maps1959/moldovans.js"></script>
-<script src="Maps/maps1959/poles.js"></script>
-<script src="Maps/maps1959/gypsy.js"></script>
-<script src="Maps/maps1959/romanians.js"></script>
-<script src="Maps/maps1959/russians.js"></script>
-<script src="Maps/maps1959/slovaks.js"></script>
-<script src="Maps/maps1959/tatars.js"></script>
-<script src="Maps/maps1959/ukrainians.js"></script>
+<!--&lt;!&ndash; 1959 maps &ndash;&gt;-->
+<!--<script src="Maps/maps1959/belarusians.js"></script>-->
+<!--<script src="Maps/maps1959/bulgarians.js"></script>-->
+<!--<script src="Maps/maps1959/gagauzes.js"></script>-->
+<!--<script src="Maps/maps1959/greeks.js"></script>-->
+<!--<script src="Maps/maps1959/hungarians.js"></script>-->
+<!--<script src="Maps/maps1959/jews.js"></script>-->
+<!--<script src="Maps/maps1959/moldovans.js"></script>-->
+<!--<script src="Maps/maps1959/poles.js"></script>-->
+<!--<script src="Maps/maps1959/gypsy.js"></script>-->
+<!--<script src="Maps/maps1959/romanians.js"></script>-->
+<!--<script src="Maps/maps1959/russians.js"></script>-->
+<!--<script src="Maps/maps1959/slovaks.js"></script>-->
+<!--<script src="Maps/maps1959/tatars.js"></script>-->
+<!--<script src="Maps/maps1959/ukrainians.js"></script>-->
 
-<!-- 1931 maps -->
-<script src="Maps/maps1931/ukrainians.js"></script>
-<script src="Maps/maps1931/armenians.js"></script>
-<script src="Maps/maps1931/belarusians.js"></script>
-<script src="Maps/maps1931/bulgarians.js"></script>
-<script src="Maps/maps1931/crimean_tatars.js"></script>
-<script src="Maps/maps1931/czechs_and_slovaks.js"></script>
-<script src="Maps/maps1931/germans.js"></script>
-<script src="Maps/maps1931/greeks.js"></script>
-<script src="Maps/maps1931/hungarians.js"></script>
-<script src="Maps/maps1931/jews.js"></script>
-<script src="Maps/maps1931/latvians.js"></script>
-<script src="Maps/maps1931/lithuanians.js"></script>
-<script src="Maps/maps1931/moldovans.js"></script>
-<script src="Maps/maps1931/poles.js"></script>
-<script src="Maps/maps1931/roma.js"></script>
-<script src="Maps/maps1931/russians.js"></script>
-<script src="Maps/maps1931/tatars.js"></script>
+<!--&lt;!&ndash; 1931 maps &ndash;&gt;-->
+<!--<script src="Maps/maps1931/ukrainians.js"></script>-->
+<!--<script src="Maps/maps1931/armenians.js"></script>-->
+<!--<script src="Maps/maps1931/belarusians.js"></script>-->
+<!--<script src="Maps/maps1931/bulgarians.js"></script>-->
+<!--<script src="Maps/maps1931/crimean_tatars.js"></script>-->
+<!--<script src="Maps/maps1931/czechs_and_slovaks.js"></script>-->
+<!--<script src="Maps/maps1931/germans.js"></script>-->
+<!--<script src="Maps/maps1931/greeks.js"></script>-->
+<!--<script src="Maps/maps1931/hungarians.js"></script>-->
+<!--<script src="Maps/maps1931/jews.js"></script>-->
+<!--<script src="Maps/maps1931/latvians.js"></script>-->
+<!--<script src="Maps/maps1931/lithuanians.js"></script>-->
+<!--<script src="Maps/maps1931/moldovans.js"></script>-->
+<!--<script src="Maps/maps1931/poles.js"></script>-->
+<!--<script src="Maps/maps1931/roma.js"></script>-->
+<!--<script src="Maps/maps1931/russians.js"></script>-->
+<!--<script src="Maps/maps1931/tatars.js"></script>-->
 
-<!-- 1910 maps -->
-<script src="Maps/maps1910/armenians.js"></script>
-<script src="Maps/maps1910/belarusians.js"></script>
-<script src="Maps/maps1910/bulgarians.js"></script>
-<script src="Maps/maps1910/czechs.js"></script>
-<script src="Maps/maps1910/germans.js"></script>
-<script src="Maps/maps1910/greeks.js"></script>
-<script src="Maps/maps1910/moldovans.js"></script>
-<script src="Maps/maps1910/polish.js"></script>
-<script src="Maps/maps1910/gypsy.js"></script>
-<script src="Maps/maps1910/russians.js"></script>
-<script src="Maps/maps1910/tatars.js"></script>
-<script src="Maps/maps1910/jews.js"></script>
-<script src="Maps/maps1910/ukrainians.js"></script>
+<!--&lt;!&ndash; 1910 maps &ndash;&gt;-->
+<!--<script src="Maps/maps1910/armenians.js"></script>-->
+<!--<script src="Maps/maps1910/belarusians.js"></script>-->
+<!--<script src="Maps/maps1910/bulgarians.js"></script>-->
+<!--<script src="Maps/maps1910/czechs.js"></script>-->
+<!--<script src="Maps/maps1910/germans.js"></script>-->
+<!--<script src="Maps/maps1910/greeks.js"></script>-->
+<!--<script src="Maps/maps1910/moldovans.js"></script>-->
+<!--<script src="Maps/maps1910/polish.js"></script>-->
+<!--<script src="Maps/maps1910/gypsy.js"></script>-->
+<!--<script src="Maps/maps1910/russians.js"></script>-->
+<!--<script src="Maps/maps1910/tatars.js"></script>-->
+<!--<script src="Maps/maps1910/jews.js"></script>-->
+<!--<script src="Maps/maps1910/ukrainians.js"></script>-->

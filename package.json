@@ -10,6 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "requirejs": "^2.3.6"
+    "fs": "0.0.1-security",
+    "http": "0.0.1-security",
+    "leaflet": "^1.9.3",
+    "path": "^0.12.7",
+    "requirejs": "^2.3.6",
+    "webpack": "^5.76.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.0.1"
   }
 }

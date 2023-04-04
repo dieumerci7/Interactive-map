@@ -1,5 +1,5 @@
 .overlay {
-    position:absolute;
+    position: fixed;
     display:none;
 
     /* color with alpha transparency */
@@ -17,7 +17,7 @@
     --popupHeight: 80%;
 }
 .popup {
-    position: absolute;
+    position: fixed;
     padding: 0px 50px 0px 50px;
     display: none;
     background-color: black;
@@ -25,6 +25,7 @@
     z-index: 1000;
     border-radius: 10%;
     border-style: groove;
+    opacity: 0.5;
 
     overflow: auto;
     align-items: center;
@@ -63,9 +64,9 @@
 }
 
 .close-icon {
-    position: absolute;
-    right: 5px;
-    top: 5px;
+    position: fixed;
+    right: 25px;
+    top: 50px;
     width: 30px;
     height: 30px;
 

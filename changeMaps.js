@@ -1,9 +1,15 @@
+// import {loadByYear} from './loadScripts.js'
 let curYear = 1989
 let curNation = "ukr"
 let popupActive = false
+let loadedScripts = new Map()
 
-$("body").click(function(){
+$("body").click(function(event){
     if (!popupActive) return;
+    if ($(event.target).closest(".popup").length) {
+        console.log("Hey, I'm clicked!!!");
+        return;
+    }
     $(".overlay, .popup").fadeToggle();
     document.body.classList.remove("stop-scrolling");
     popupActive = false;
@@ -35,9 +41,15 @@ $(document).ready
     $("#1989").css("text-decoration-thickness", "2.5px")
     $('#hiddenText').html("This is sample text for year " + curYear.toString() + '. A hell lot of text:-)')
     $(".popup").load("InfoMarkups/1989_Info.html");
-    // let popupHeight = $('.popup').height()
-    // $('.popup-content').height(popupHeight)
-    //$('.popup-content').css('vertical-align', 'middle')
+
+    loadByYear('1989')
+    loadedScripts.set('2001', false);
+    loadedScripts.set('1989', true);
+    loadedScripts.set('1979', false);
+    loadedScripts.set('1970', false);
+    loadedScripts.set('1959', false);
+    loadedScripts.set('1931', false);
+    loadedScripts.set('1910', false);
 
 //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
     var dropdown = document.getElementsByClassName("dropdown-btn");
@@ -165,6 +177,7 @@ function setNationFontWeightsToNormal() {
 }
 
 function yearChange(id) {
+    loadByYear(id)
     setYearStylesToNormal();
     curYear = parseInt(id)
     showNationsByYear(curYear)
@@ -173,12 +186,12 @@ function yearChange(id) {
     $("#" + id).css("text-decoration-color", "#00b68b")
     $("#" + id).css("text-decoration-thickness", "2.5px")
     // document.getElementById(id).style.color = "white";
-    rerenderMap();
     let fileWithCurYearInfo = "InfoMarkups/" + curYear.toString() + "_Info.html";
     $(".popup").load(fileWithCurYearInfo);
-    setTimeout(
-        controlPopupHeight, 500);
+
+    setTimeout(controlPopupHeight, 500);
     // $('#hiddenText').html("This is sample text for year " + curYear.toString() + '. A hell lot of text:-)');
+    rerenderMap();
 }
 
 function nationChange(id) {
@@ -330,7 +343,6 @@ function rerenderMap() {
     else if(curYear === 1989) {
         switch (curNation) {
             case "alb":
-                $.getScript("Maps/maps1989/albanians.js")
                 $('#alb1989').show()
                 map_1f4ba356da92d43a9220fd85760b090f.invalidateSize()
                 break;
@@ -756,7 +768,69 @@ function rerenderMap() {
                 break;
             default:
                 $('#ukr1910').show()
-                map_0ac0fe9eaccda7f8b7515cf3e9baa31a.invalidateSize()
+                setTimeout(map_0ac0fe9eaccda7f8b7515cf3e9baa31a.invalidateSize(), 100)
         }
+    }
+}
+
+function loadByYear(year){
+    if(loadedScripts.get(year)) return;
+    loadedScripts.set(year, true)
+
+    let files = []
+    switch (year) {
+
+        case '2001':
+            files = ['armenians', 'azerbaijani', 'belarusians', 'bulgarians', 'crimean_tatars',
+                'gagauz_people', 'georgians', 'germans', 'greeks', 'hungarians', 'moldovans',
+                'poles', 'roma', 'romanians', 'russians', 'slovaks', 'tatars', 'ukrainians']
+            break;
+        case '1989':
+            files = ['albanians', 'armenians', 'azerbaijani', 'belarusians', 'bulgarians',
+                'chuvashi', 'crimean_tatars', 'czechs', 'gypsy',
+                'gagauzes', 'georgians', 'germans', 'greeks', 'hungarians', 'jews', 'koreans',
+                'mari', 'moldovans', 'mordvins',
+                'poles', 'romanians', 'russians', 'slovaks', 'tatars', 'ukrainians', 'uzbeks']
+            break;
+        case '1979':
+            files = ['belarusians', 'bulgarians', 'gagauzs', 'greeks', 'hungarians',
+                'jews', 'karaites', 'moldovans',
+                'poles', 'romanians', 'russians', 'tatars', 'ukrainians']
+            break;
+        case '1970':
+            files = ['armenians', 'belarusians', 'bulgarians', 'chuvashi', 'gagauzes',
+                'greeks', 'gypsy', 'hungarians', 'jews', 'karaites', 'moldovans', 'mordvins',
+                'poles', 'romanians', 'russians', 'slovaks', 'tatars', 'ukrainians']
+            break;
+        case '1959':
+            files = ['belarusians', 'bulgarians', 'gagauzes', 'greeks', 'gypsy',
+                'hungarians', 'jews', 'moldovans', 'poles', 'romanians', 'russians', 'slovaks',
+                'tatars', 'ukrainians']
+            break;
+        case '1931':
+            files = ['armenians', 'belarusians', 'bulgarians', 'crimean_tatars',
+                'czechs_and_slovaks', 'germans', 'greeks', 'hungarians', 'jews',
+                'latvians', 'lithuanians', 'moldovans', 'poles', 'roma', 'russians',
+                'tatars', 'ukrainians']
+            break;
+        case '1910':
+            files = ['armenians', 'belarusians', 'bulgarians', 'czechs', 'germans', 'greeks',
+                'gypsy', 'jews', 'moldovans', 'polish', 'russians', 'tatars', 'ukrainians']
+            break;
+    }
+
+    for (let i = 0; i < files.length; ++i) {
+        let dir = "Maps/maps" + year.toString() + "/" + files[i] + ".js";
+        $.ajax({
+            url: dir,
+            dataType: "script",
+            cache: false,
+            success: function() {
+                console.log("File loaded and executed.");
+            },
+            error: function(xhr, status, error) {
+                console.error("Error loading file:", error);
+            }
+        });
     }
 }
