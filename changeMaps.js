@@ -1,4 +1,3 @@
-// import {loadByYear} from './loadScripts.js'
 let curYear = 1989
 let curNation = "ukr"
 let popupActive = false
@@ -42,35 +41,49 @@ $(document).ready
     $('#hiddenText').html("This is sample text for year " + curYear.toString() + '. A hell lot of text:-)')
     $(".popup").load("InfoMarkups/1989_Info.html");
 
-    loadByYear('1989')
-    loadedScripts.set('2001', false);
-    loadedScripts.set('1989', true);
-    loadedScripts.set('1979', false);
-    loadedScripts.set('1970', false);
-    loadedScripts.set('1959', false);
-    loadedScripts.set('1931', false);
-    loadedScripts.set('1910', false);
+    // loadedScripts.set('2001', false);
+    years = ['2001', '1989', '1979', '1970', '1959', '1931', '1910'];
+    nationIds = ['alb', 'arm', 'aze', 'bel', 'bul', 'chu', 'cri', 'cze', 'czs',
+    'gag', 'geo', 'ger', 'gre', 'hun', 'jew', 'kor', 'kar', 'lat', 'lit',
+    'mar', 'mol', 'mor', 'pol', 'gyp', 'rom', 'rus', 'slo', 'tat', 'ukr',
+    'uzb']
+    years.forEach(function (year){
+        loadedScripts.set(year, new Map());
+        nationIds.forEach(function (nation){
+            loadedScripts.get(year).set(nation, false)
+        })
+    })
+    loadByYear('1989', curNation)
+    // loadedScripts.set('1989', true);
+    // loadedScripts.set('1979', false);
+    // loadedScripts.set('1970', false);
+    // loadedScripts.set('1959', false);
+    // loadedScripts.set('1931', false);
+    // loadedScripts.set('1910', false);
 
 //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
 
     for (i = 0; i < dropdown.length; i++) {
-        dropdown[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-                dropdownContent.style.display = "none";
-            } else {
-                dropdownContent.style.display = "block";
-            }
-        });
+        // dropdown[i].addEventListener("click", function() {
+        //     this.classList.toggle("active");
+        //     var dropdownContent = this.nextElementSibling;
+        //     if (dropdownContent.style.display === "block") {
+        //         dropdownContent.style.display = "none";
+        //     } else {
+        //         dropdownContent.style.display = "block";
+        //     }
+        // });
+        dropdown[i].classList.toggle('active');
+        var dropdownContent = dropdown[i].nextElementSibling;
+        dropdownContent.style.display = 'block';
     }
 }
 
 function hideAll() {
     let ids2001 = ['#arm2001', '#aze2001', '#bel2001', '#bul2001', '#cri2001',
-        '#gag2001', '#geo2001', '#ger2001', '#gre2001', '#hun2001',
+        '#gag2001', '#geo2001', '#ger2001', '#gre2001', '#hun2001', '#jew2001',
         '#mol2001', '#pol2001', '#gyp2001', '#rom2001', '#rus2001',
         '#slo2001', '#tat2001', '#ukr2001']
     for (let i = 0; i < ids2001.length; i++) {
@@ -177,7 +190,7 @@ function setNationFontWeightsToNormal() {
 }
 
 function yearChange(id) {
-    loadByYear(id)
+    loadByYear(id, curNation)
     setYearStylesToNormal();
     curYear = parseInt(id)
     showNationsByYear(curYear)
@@ -197,6 +210,7 @@ function yearChange(id) {
 function nationChange(id) {
     setNationFontWeightsToNormal()
     curNation = id
+    loadByYear(curYear.toString(), curNation)
     document.getElementById(id).style.fontWeight = "bold";
     document.getElementById(id).style.color = "white";
     rerenderMap()
@@ -248,7 +262,7 @@ function showNationsByYear(year) {
             break;
         case 2001:
             let ids2001 = ['arm', 'aze', 'bel', 'bul', 'cri', 'gag', 'geo',
-                'ger', 'gre', 'hun', 'mol', 'pol', 'gyp', 'rom', 'rus', 'slo',
+                'ger', 'gre', 'hun', 'jew', 'mol', 'pol', 'gyp', 'rom', 'rus', 'slo',
                 'tat', 'ukr']
             for (let i = 0; i < ids2001.length; i++) {
                 $('#' + ids2001[i]).show()
@@ -269,186 +283,186 @@ function rerenderMap() {
         switch (curNation) {
             case 'arm':
                 $('#arm2001').show()
-                map_a5ab95940eebb9a5730e32c125d85ca4.invalidateSize()
+                map_d3deb3fd9898c2dbbe4ca808ae3510b0.invalidateSize()
                 break;
             case 'aze':
                 $('#aze2001').show()
-                map_fa9666b6dfadfd662e54386c9989f043.invalidateSize()
+                map_61284ec5237c4c5aae3dedd84f84c8b8.invalidateSize()
                 break;
             case 'bel':
                 $('#bel2001').show()
-                map_4ea74f22a7da31f0d14c536a01d15dec.invalidateSize()
+                map_e40ea4f3d913022a9cc378d0d5f016d1.invalidateSize()
                 break;
             case 'bul':
                 $('#bul2001').show()
-                map_3a6397e3a98848ec570e01c3b956270f.invalidateSize()
+                map_e09a536487ae91499bcc8f1d9f92c1b8.invalidateSize()
                 break;
             case 'cri':
                 $('#cri2001').show()
-                map_59c0854e716b73b2ee9a0c90500d08b3.invalidateSize()
+                map_7c802ad0fcb734797ed2a93d9d258e57.invalidateSize()
                 break;
             case 'gag':
                 $('#gag2001').show()
-                map_74362a66daee557de731efeb2e554597.invalidateSize()
+                map_23815b46d933e4b83be64e6b9bf2ff13.invalidateSize()
                 break;
             case 'geo':
                 $('#geo2001').show()
-                map_37ed2f64604ca8667073fccaebcac14a.invalidateSize()
+                map_f6573f9c9e66f6f3b69f5ab8fc3d81f9.invalidateSize()
                 break;
             case 'ger':
                 $('#ger2001').show()
-                map_479b95009cb71d04f6e3d82b654f5e84.invalidateSize()
+                map_443bc4255319097bae7e348fa0ebe223.invalidateSize()
                 break;
             case 'gre':
                 $('#gre2001').show()
-                map_f0c1ae40893416c370cac472c880f2c7.invalidateSize()
+                map_5f265895a3c935c19df90b871a6057ba.invalidateSize()
                 break;
             case 'hun':
                 $('#hun2001').show()
-                map_3c636e096f088a205f2e47a02c3731ce.invalidateSize()
+                map_b3cbca5ed24894554fb9554784ce3525.invalidateSize()
+                break;
+            case 'jew':
+                $('#jew2001').show()
+                map_1c42f1ec3db97444051b13cfe14beddd.invalidateSize()
                 break;
             case 'mol':
                 $('#mol2001').show()
-                map_84f98d0c7d2da47ec13a512a94a63a94.invalidateSize()
+                map_db405dcb7e3e717f640bbeac04a7f6e8.invalidateSize()
                 break;
             case 'pol':
                 $('#pol2001').show()
-                map_565b1615c382beff77e44b316152f76f.invalidateSize()
+                map_3307d75fd19d5b2046b3a7b2345e733e.invalidateSize()
                 break;
             case 'gyp':
                 $('#gyp2001').show()
-                map_92f3dcbd1ba04c7b5e2068a71e84343c.invalidateSize()
+                map_f4c37b6376d203f18393fd1e93219be3.invalidateSize()
                 break;
             case 'rom':
                 $('#rom2001').show()
-                map_6fed0a58599c310da555f6e9a00a3e96.invalidateSize()
+                map_ed655ea60a812dbd0a4ef91a64099790.invalidateSize()
                 break;
             case 'rus':
                 $('#rus2001').show()
-                map_f0cdb18409c29119d6b32fc965b674a4.invalidateSize()
+                map_768bce02f9ae4d309aadaed1806ec1f5.invalidateSize()
                 break;
             case 'slo':
                 $('#slo2001').show()
-                map_d26e2d0deec24ca7aa55131332df3f33.invalidateSize()
+                map_6c9dc15eb721cb99a64c92c8f5a86922.invalidateSize()
                 break;
             case 'tat':
                 $('#tat2001').show()
-                map_93e2098b257bd00da1b0f2b949b7444c.invalidateSize()
+                map_11c0ba9aa54250bf342349496974b5be.invalidateSize()
                 break;
             default:
                 $('#ukr2001').show()
-                map_336388c1c0594ab2c66af6afa12197f5.invalidateSize()
+                map_c578f79cf859db647e73751c203a0ee1.invalidateSize()
         }
     }
     else if(curYear === 1989) {
         switch (curNation) {
             case "alb":
                 $('#alb1989').show()
-                map_1f4ba356da92d43a9220fd85760b090f.invalidateSize()
+                map_2a78f0accd57b8e45606d9d6cacc5233.invalidateSize()
                 break;
             case "arm":
                 $('#arm1989').show()
-                map_239a22e53127770fb5b6682766918d30.invalidateSize()
+                map_7f00797c7099efb02530ceedec6e4ddd.invalidateSize()
                 break;
             case "aze":
                 $('#aze1989').show()
-                map_df2a6176d499aa134fc28b261f6ea801.invalidateSize()
+                map_66b643703b71b565b87c5f51ac38e1d6.invalidateSize()
                 break;
             case "bel":
                 $('#bel1989').show()
-                map_36de4db921e43ea044bf933d3a88fa7a.invalidateSize()
+                map_1de5cc021685b8de68cb5581b41075dc.invalidateSize()
                 break;
             case "bul":
                 $('#bul1989').show()
-                map_34b601f1ffa5219db9bc66bc6854b3f0.invalidateSize()
+                map_f43cc2d3468d4c6c913e2612ff327e08.invalidateSize()
                 break;
             case "chu":
                 $('#chu1989').show()
-                map_c17eb3baae8dc699d3b817c82392733d.invalidateSize()
+                map_33cd1980b057b7ab65d50c04de25b5ba.invalidateSize()
                 break;
             case "cri":
                 $('#cri1989').show()
-                map_3cba70bdd44c50b94caec562d23bfbd8.invalidateSize()
+                map_eb95a3f644d23dd7f3a5901e75bd39aa.invalidateSize()
                 break;
             case "cze":
                 $('#cze1989').show()
-                map_fc59c617949d2360965cd4b839afdfb0.invalidateSize()
+                map_eb3ad9432e89460360aa7605bc883653.invalidateSize()
                 break;
             case "gag":
                 $('#gag1989').show()
-                map_dce332e1dac76c9001c69d8c5abeea93.invalidateSize()
+                map_d887004b7d9855ac8a20303babdb55b8.invalidateSize()
                 break;
             case "geo":
                 $('#geo1989').show()
-                map_8dc79fa8fed703948ffa958057e385cd.invalidateSize()
+                map_2cdf0c6b98501c3ee69a9c9cfce0c111.invalidateSize()
                 break;
             case "ger":
                 $('#ger1989').show()
-                map_f7165220cf95dc57858bf298caece42a.invalidateSize()
+                map_4e9eb3e24247371881497935169307e8.invalidateSize()
                 break;
             case "gre":
                 $('#gre1989').show()
-                map_1243632302a7976e83d6409c8a074a3d.invalidateSize()
+                map_f01030deeb2c5915687d14fd1587ad5c.invalidateSize()
                 break;
             case "hun":
                 $('#hun1989').show()
-                map_7089f9d230eea61840f905a6f3fecaeb.invalidateSize()
+                map_7d4bc42111a07ceec13c324f6054298e.invalidateSize()
                 break;
             case "jew":
                 $('#jew1989').show()
-                map_815e1f7d1630ecb1884f2ebf88e1015f.invalidateSize()
+                map_01ca5f1783ed5b197b8b1c61e6c6497e.invalidateSize()
                 break;
             case "kor":
                 $('#kor1989').show()
-                map_20f768dcfd0a541a3c730f1eb338c75d.invalidateSize()
+                map_8a5dbf6cfce314e3bbad26003b62c930.invalidateSize()
                 break;
             case "mar":
                 $('#mar1989').show()
-                map_83ec59278df7a5bc6bbea91977f1010f.invalidateSize()
+                map_eceb16bccd0bebd8c2408c2e7636b0d6.invalidateSize()
                 break;
             case "mol":
                 $('#mol1989').show()
-                map_b3b92d332fd1ddbc6454caf6bbffc272.invalidateSize()
+                map_2e2e5111f97dbc5c32f6e2ad99938b6c.invalidateSize()
                 break;
             case "mor":
                 $('#mor1989').show()
-                map_1b1a584089d863b8e31af50101600816.invalidateSize()
+                map_dcfc578983faab4b7da4f239f7f94ef7.invalidateSize()
                 break;
             case "pol":
                 $('#pol1989').show()
-                map_77a1ace154eea2b77fc663e699b7c238.invalidateSize()
+                map_60de2f4233ad759fd14b59201dea6ad4.invalidateSize()
                 break;
             case "gyp":
                 $('#gyp1989').show()
-                map_312efb7b3ae06c38f697d449652289ed.invalidateSize()
+                map_69b38b0a3a13b5b6756638110e4ded79.invalidateSize()
                 break;
             case "rom":
                 $('#rom1989').show()
-                map_3b12d21f0f322d0f4462a7d6af756fe3.invalidateSize()
+                map_e4c3715cbf63832f791a17bc4bf825be.invalidateSize()
                 break;
             case "rus":
                 $('#rus1989').show()
-                map_dd0e055d359805c36e147bec9e5ee4bc.invalidateSize()
+                map_18bea5a9f4082a57441994def17595c6.invalidateSize()
                 break;
             case "slo":
                 $('#slo1989').show()
-                map_dc0de8315f5391356feaf50f6b2e7952.invalidateSize()
+                map_5ab6e16ed9e2cec567025824ba999d67.invalidateSize()
                 break;
             case "tat":
                 $('#tat1989').show()
-                map_fea83e164123b2dde9b3dd0e14c796a1.invalidateSize()
+                map_6d542b3445acbe0f29c3b97aba5888d4.invalidateSize()
                 break;
-            // case "ukr":
-            //     $('#ukr1989').show()
-            //     map_4ac3969c1e5f64e7053a3ebbb7adc1b0.invalidateSize()
-            //     break;
             case "uzb":
                 $('#uzb1989').show()
-                map_ad24f5885eb2e4a5cb77da985295a24b.invalidateSize()
+                map_8594fceef1eb276e79d5a9949abbc555.invalidateSize()
                 break;
             default:
                 $('#ukr1989').show()
-                map_2488a2de6718fb7e218b7db2b9343d6d.invalidateSize()
+                map_1e42cafe77e169de12a2e1db8c03468f.invalidateSize()
                 break;
         }
     }
@@ -456,334 +470,344 @@ function rerenderMap() {
         switch (curNation) {
             case 'bel':
                 $('#bel1979').show()
-                map_8afb1c09649c9b93fcefacf80c5f7fe8.invalidateSize()
+                map_0e4dc67731c7bb5b1eea97e901afc3cf.invalidateSize()
                 break;
             case 'bul':
                 $('#bul1979').show()
-                map_bddc1284f6e9f0b62dda5ad4133db380.invalidateSize()
+                map_02f3629fa96516577868d8b9caf9649a.invalidateSize()
                 break;
             case 'gag':
                 $('#gag1979').show()
-                map_6e2e2fc8d229db7beb0915d87512042f.invalidateSize()
+                map_5dfc49507343ff3b3f503e83a302e8e7.invalidateSize()
                 break;
             case 'gre':
                 $('#gre1979').show()
-                map_2a9554514281a5b02f75a098c91a38c1.invalidateSize()
+                map_3607ed7137c8d4c93124010509c859fa.invalidateSize()
                 break;
             case 'hun':
                 $('#hun1979').show()
-                map_ed75934111e17ddc954e1baf0c255566.invalidateSize()
+                map_72c8478f76f567efa1643339f6bbb7bf.invalidateSize()
                 break;
             case 'jew':
                 $('#jew1979').show()
-                map_cc78b752cae911b620643519f73b4e6a.invalidateSize()
+                map_07478eb09605ca397045eaf630a9ae02.invalidateSize()
                 break;
             case 'kar':
                 $('#kar1979').show()
-                map_6d5e0d9965784fdc0b5002bbe8d67a06.invalidateSize()
+                map_56e68e62f0394061d0b238d0063b1eac.invalidateSize()
                 break;
             case 'mol':
                 $('#mol1979').show()
-                map_23f6d1963523b4ac6c8cc433f10527c0.invalidateSize()
+                map_07d0cab0c7b59e2eb64422113fce7401.invalidateSize()
                 break;
             case 'pol':
                 $('#pol1979').show()
-                map_5b890f5a698e4da63c9f66a7aa56833e.invalidateSize()
+                map_2d1588d596a9467f9c713575d4a200fe.invalidateSize()
                 break;
             case 'rom':
                 $('#rom1979').show()
-                map_c70fb34fea15ecbf9f198774c9251f6d.invalidateSize()
+                map_b92fd30417037ef8c14858136be479a4.invalidateSize()
                 break;
             case 'rus':
                 $('#rus1979').show()
-                map_97f831903a5a974a18a71a7fe7138997.invalidateSize()
+                map_60ef73c1ebff8217e982d54a3275e899.invalidateSize()
                 break;
             case 'tat':
                 $('#tat1979').show()
-                map_68268081a730661151eb03ce83fc34af.invalidateSize()
+                map_953691034030ff0b793f2420c490ba3d.invalidateSize()
                 break;
             default:
                 $('#ukr1979').show()
-                map_fde3c1c833463e5db72d28c1197aadda.invalidateSize();
+                map_aa87c32bdbfc56802d94a6d60b158f3c.invalidateSize();
         }
     }
     else if (curYear == 1970) {
         switch (curNation) {
             case 'arm':
                 $('#arm1970').show()
-                map_84d7880b62c908cac146c7c2a1a90d52.invalidateSize()
+                map_9221ccdbfcead9316edaeb3adceba96c.invalidateSize()
                 break;
             case 'bel':
                 $('#bel1970').show()
-                map_349056249b53c3b10bf2e07df99458e2.invalidateSize()
+                map_1cbf1e81b5d51d0d9e26e522c05898e2.invalidateSize()
                 break;
             case 'bul':
                 $('#bul1970').show()
-                map_699e6a02c3b226bd6d6a949501a7de36.invalidateSize()
+                map_32441529ac0c61950e5c7038040025ad.invalidateSize()
                 break;
             case 'chu':
                 $('#chu1970').show()
-                map_b918451a95a9496b00b57b858365b16c.invalidateSize()
+                map_43bab48387494e8cbf93a61b94111b5e.invalidateSize()
                 break;
             case 'gag':
                 $('#gag1970').show()
-                map_525b5d458f3d1c958ab45fd472a4c4c0.invalidateSize()
+                map_11f116c3daececa5bafba2564f2f1102.invalidateSize()
                 break;
             case 'gre':
                 $('#gre1970').show()
-                map_d9236c5efaa2b0b2da4d954147f31425.invalidateSize()
+                map_b06885b06e5962bc630775ab5c4826fb.invalidateSize()
                 break;
             case 'hun':
                 $('#hun1970').show()
-                map_52e71a8672ace0e96b74a72ee34cb2ff.invalidateSize()
+                map_8562a77f6900d576ea7413e3f306973c.invalidateSize()
                 break;
             case 'jew':
                 $('#jew1970').show()
-                map_0f48893eeca347dd4bdc5911959a19c0.invalidateSize()
+                map_0c82f3b53dc6098ac4915d39f1681e09.invalidateSize()
                 break;
             case 'kar':
                 $('#kar1970').show()
-                map_12b9cc49a89f351eadbdec0154be24cf.invalidateSize()
+                map_a3b7841bc7841d555439f29560d22832.invalidateSize()
                 break;
             case 'mol':
                 $('#mol1970').show()
-                map_4f876c4ad75827163ccede93a2b7f9d0.invalidateSize()
+                map_daf98e26a594a5d023cc6b35a7014471.invalidateSize()
                 break;
             case 'mor':
                 $('#mor1970').show()
-                map_f8a345e1b54999a9da65e406296bfdb1.invalidateSize()
+                map_a53567ddfb98e796a1bb2ef2986d63e8.invalidateSize()
                 break;
             case 'pol':
                 $('#pol1970').show()
-                map_458b2214a9fb3cc67640070e0765755c.invalidateSize()
+                map_82e1d06311eecd0056fe0f7db1119199.invalidateSize()
                 break;
             case 'gyp':
                 $('#gyp1970').show()
-                map_d9bbe96091daf6e8d9c358e7711683f4.invalidateSize()
+                map_4037ac3e99b4bb56619e193e92d6a275.invalidateSize()
                 break;
             case 'rom':
                 $('#rom1970').show()
-                map_ad12fa948b60f00374c83d22acac19dd.invalidateSize()
+                map_8b24a8d9dd71c3149461f97012e213b8.invalidateSize()
                 break;
             case 'rus':
                 $('#rus1970').show()
-                map_206c25b63f5990cedee8d60889d548a8.invalidateSize()
+                map_299d757011b0c73d6186db87b3b923f0.invalidateSize()
                 break;
             case 'slo':
                 $('#slo1970').show()
-                map_22216f1858c768ae09afd3126d029112.invalidateSize()
+                map_9fc701da77ccb1faee62d4d6d764b741.invalidateSize()
                 break;
             case 'tat':
                 $('#tat1970').show()
-                map_5020149c3b69c165cdac5a3f7f9f290a.invalidateSize()
+                map_d53e17a1f81c86fca794c0585b25d093.invalidateSize()
                 break;
             default:
                 $('#ukr1970').show()
-                map_98564c962727a290441d2607c6d55692.invalidateSize()
+                map_235636e5646e0bd00a7e96766df97f23.invalidateSize()
         }
     }
     else if (curYear === 1959) {
         switch (curNation) {
             case "bel":
                 $('#bel1959').show()
-                map_51b5cf96674136b3da45f2ee13554846.invalidateSize()
+                map_3c2a2fac420b2330fbca7e91b15ebf89.invalidateSize()
                 break;
             case "bul":
                 $('#bul1959').show()
-                map_dfb759433018496b0f76e055ee04d68e.invalidateSize()
+                map_29b6eefcc112cc42eefb64065fa9edaf.invalidateSize()
                 break;
             case "gag":
                 $('#gag1959').show()
-                map_fde02dda9fff7d50500dc1b592598693.invalidateSize()
+                map_d911bda13ef78433c157cd9a0ae9257c.invalidateSize()
                 break;
             case "gre":
                 $('#gre1959').show()
-                map_0944a7c3f8e880275fc46914c901602e.invalidateSize()
+                map_78c182de3b6b94a057edebcfa8688554.invalidateSize()
                 break;
             case "hun":
                 $('#hun1959').show()
-                map_463d72bb95917d782d86aa769af7e044.invalidateSize()
+                map_41c87abbfef1628ed5ddd767a648e901.invalidateSize()
                 break;
             case "jew":
                 $('#jew1959').show()
-                map_4b0be4cd4352d8f95a7cb946b5ecd74f.invalidateSize()
+                map_fa738c668048df37a220d1dc9a79a16a.invalidateSize()
                 break;
             case "mol":
                 $('#mol1959').show()
-                map_e14df29a6bb8277a25811352791d6bfd.invalidateSize()
+                map_70eea7d28a73a5361358ea021989c9f6.invalidateSize()
                 break;
             case "pol":
                 $('#pol1959').show()
-                map_3975fb39d6b586000507c2163c1d28cd.invalidateSize()
+                map_5a4c7fb839fdd1a4125f93c1593043ea.invalidateSize()
                 break;
             case "gyp":
                 $('#gyp1959').show()
-                map_c4307bd7318decb1315cc6591536a277.invalidateSize()
+                map_41db3723ad8af0d131f67a60656210e2.invalidateSize()
                 break;
             case "rom":
                 $('#rom1959').show()
-                map_d1d68166be98f99b876cbe6471b29cad.invalidateSize()
+                map_013cdaddfb72729679659d2ba727d7f1.invalidateSize()
                 break;
             case "rus":
                 $('#rus1959').show()
-                map_b9d0b1f5375a4b2f5c51d2949726b7f7.invalidateSize()
+                map_7e7598b7ecfcb9b0bc0c31bd1290992b.invalidateSize()
                 break;
             case "slo":
                 $('#slo1959').show()
-                map_51f12d8010fa28408d3c01a566a7b67e.invalidateSize()
+                map_23c86cac48937b728d87e4842eae1cf2.invalidateSize()
                 break;
             case "tat":
                 $('#tat1959').show()
-                map_116a65eb5bdfe55a25cd3ede0224ea95.invalidateSize()
+                map_d5a5f6032ba47c58bef5e699d9690357.invalidateSize()
                 break;
-            // case "ukr":
-            //     $('#ukr1959').show()
-            //     map_3712c3e87dff04abff8a461f0e951107.invalidateSize()
-            //     break;
             default:
                 $('#ukr1959').show()
-                map_30f8a4b361a47a620318102a1a1ef893.invalidateSize()
+                map_c06f9a41fc84eeb4e225657b6fb3780e.invalidateSize()
         }
     }
     else if (curYear === 1931) {
         switch (curNation) {
             case "arm":
                 $('#arm1931').show()
-                map_7390ecc6050c2c86d58273c4d76cabb2.invalidateSize()
+                map_3cf9194f8cfb4b5e6867f9948e36c9bc.invalidateSize()
                 break;
             case "bel":
                 $('#bel1931').show()
-                map_061749b35ef271a5d44b090621feb28c.invalidateSize()
+                map_be53313588f8adc7542e6538a83e520a.invalidateSize()
                 break;
             case "bul":
                 $('#bul1931').show()
-                map_d83dd6ee452fbb54f2ee0cf23d5615a2.invalidateSize()
+                map_9cd6e624b2859e6d049c3f4e8a129497.invalidateSize()
                 break;
             case "cri":
                 $('#cri1931').show()
-                map_1e3346aa5ed9d0aabc1682838074663e.invalidateSize()
+                map_cf29f7465bf8b5a90e599ca4d09b5bdf.invalidateSize()
                 break;
             case "czs":
                 $('#czs1931').show()
-                map_5af201dd990c7b20f9049888f3eff779.invalidateSize()
+                map_8abb514f26dc59116218d5f041c227fa.invalidateSize()
                 break;
             case "ger":
                 $('#ger1931').show()
-                map_7316974ce813a403e535bf68adff022a.invalidateSize()
+                map_5fff4eee6c97ea93028aeb7011a204f9.invalidateSize()
                 break;
             case "gre":
                 $('#gre1931').show()
-                map_6d953ac2c33e81e7991101310e6994b5.invalidateSize()
+                map_bbaef37eeadce60471f7f0458817bcde.invalidateSize()
                 break;
             case "hun":
                 $('#hun1931').show()
-                map_b7c9ad8b016b44c191b392fb5424a0a4.invalidateSize()
+                map_e9a8042ab0107fe8c2462c6ca06b2e34.invalidateSize()
                 break;
             case "jew":
                 $('#jew1931').show()
-                map_0239eb14e8fbf812ff6615bcdf222dcf.invalidateSize()
+                map_55293cfc28a39117777ba1a02ecdc3c4.invalidateSize()
                 break;
             case "lat":
                 $('#lat1931').show()
-                map_1ed9b6aa021c2bd9f1a04e047943cdd4.invalidateSize()
+                map_c060deeeb002fe510b795375950ec65e.invalidateSize()
                 break;
             case "lit":
                 $('#lit1931').show()
-                map_a2cf69216e67e41c71ea90d2c977cf7d.invalidateSize()
+                map_97a3deb88f28571a162b7167e68f4f9b.invalidateSize()
                 break;
             case "mol":
                 $('#mol1931').show()
-                map_59396dc08b544d3e418a929e33e9c5fe.invalidateSize()
+                map_b1b6051ddc786f9e702ec63cbe7f46b9.invalidateSize()
                 break;
             case "pol":
                 $('#pol1931').show()
-                map_c672b45a9a1fdd798e7656250d8b5359.invalidateSize()
+                map_955a5990893665dcbe87553d0ac5aa4a.invalidateSize()
                 break;
             case "gyp":
                 $('#gyp1931').show()
-                map_b93ec8e6bcc9669b3a1e5b13a5ec668d.invalidateSize()
+                map_f8ff19ae3e4323d0a05333a13da36429.invalidateSize()
                 break;
             case "rus":
                 $('#rus1931').show()
-                map_97e603fa2e3fad8df8d97bff13fe8f75.invalidateSize()
+                map_ba1246e27c15aa05c31676b94d1ff28c.invalidateSize()
                 break;
             case "tat":
                 $('#tat1931').show()
-                map_ab1d27a7e80253a0ed016b1700aba24b.invalidateSize()
+                map_a608b0c427b7d15c26c76a63a5fd1291.invalidateSize()
                 break;
             default:
                 $('#ukr1931').show()
-                map_80a0a8e548c6cc801207dac787e17c3b.invalidateSize()
+                map_5ef298458bd559518a3fbd8f33cb6624.invalidateSize()
         }
     }
     else if (curYear == 1910) {
         switch (curNation) {
             case "arm":
                 $('#arm1910').show()
-                map_4b57ed78aaf85580048547c172039df4.invalidateSize()
+                map_7926a63ccdeee9b05b62337c6bcb2856.invalidateSize()
                 break;
             case "bel":
                 $('#bel1910').show()
-                map_158dc2d1f44baa16622214faf4b14a8b.invalidateSize()
+                map_edb70c8cd339d8184fee92498c63147b.invalidateSize()
                 break;
             case "bul":
                 $('#bul1910').show()
-                map_a3bcbaaf643506ad142ad9324785de20.invalidateSize()
+                map_d07929aebd24d16965a45edba5dab2fd.invalidateSize()
                 break;
             case "cze":
                 $('#cze1910').show()
-                map_e7ada59769aba84b2e1ef7fe00504cf3.invalidateSize()
+                map_e4b461a5808974806d76e98c2e094301.invalidateSize()
                 break;
             case "ger":
                 $('#ger1910').show()
-                map_d506cf733dd06e4198a7cfe8da8d84be.invalidateSize()
+                map_bebd4874e68d9ba41b1566ea720665ef.invalidateSize()
                 break;
             case "gre":
                 $('#gre1910').show()
-                map_ac9cac9a72027dc3ad5a89fb25eae3d9.invalidateSize()
+                map_af8945cc243864edd85642006a8ead04.invalidateSize()
                 break;
             case "mol":
                 $('#mol1910').show()
-                map_e4ab9376bc8aab329cc35f4b8c46f770.invalidateSize()
+                map_3d612726123f33c96aebffe1e84bd507.invalidateSize()
                 break;
             case "pol":
                 $('#pol1910').show()
-                map_a12773ceab6b6fee8ef25b62265fae37.invalidateSize()
+                map_bdffb16c64395960280fc308b9c074a8.invalidateSize()
                 break;
             case "gyp":
                 $('#gyp1910').show()
-                map_1b499cc3d05530dcba612943e572d8fb.invalidateSize()
+                map_522b856229ac790de81399b3ca843f4f.invalidateSize()
                 break;
             case "rus":
                 $('#rus1910').show()
-                map_820b33d07252cbf77c64535b07f89993.invalidateSize()
+                map_b315002e82528fa8cb877ad9bca62e0f.invalidateSize()
                 break;
             case "tat":
                 $('#tat1910').show()
-                map_63e776b154e7088f758ebec3baf327a4.invalidateSize()
+                map_b447e26f370afc0dbaccf2fd6826acb6.invalidateSize()
                 break;
             case "jew":
                 $('#jew1910').show()
-                map_67ce28b15b4984ee32936e61d79427a5.invalidateSize()
+                map_e4ea04fded9f9c0ff637bb2cec20f44b.invalidateSize()
                 break;
             default:
                 $('#ukr1910').show()
-                setTimeout(map_0ac0fe9eaccda7f8b7515cf3e9baa31a.invalidateSize(), 100)
+                map_61694fa678eb95225a845742e79b32c2.invalidateSize()
         }
     }
 }
 
-function loadByYear(year){
-    if(loadedScripts.get(year)) return;
-    loadedScripts.set(year, true)
-
+function loadByYear(year, nationId){
     let files = []
     switch (year) {
-
         case '2001':
+            if(nationId === 'gyp') {
+                if(validateForRequest(year, 'gyp')){
+                    requestFileFromServer(year, 'roma');
+                }
+                return;
+            }
             files = ['armenians', 'azerbaijani', 'belarusians', 'bulgarians', 'crimean_tatars',
-                'gagauz_people', 'georgians', 'germans', 'greeks', 'hungarians', 'moldovans',
-                'poles', 'roma', 'romanians', 'russians', 'slovaks', 'tatars', 'ukrainians']
+                'gagauz_people', 'georgians', 'germans', 'greeks', 'hungarians', 'jews', 'moldovans',
+                'poles', 'romanians', 'roma', 'russians', 'slovaks', 'tatars', 'ukrainians']
+            files.forEach(function (item){
+                if (item.slice(0, 3) === nationId) {
+                    if (loadedScripts.get(year).get(nationId)) return;
+                    loadedScripts.get(year).set(nationId, true);
+                    requestFileFromServer(year, item);
+                    return;
+                }
+            })
+            if (validateForRequest(year, 'ukr')) {
+                requestFileFromServer(year, 'ukrainians');
+            }
+            return;
             break;
         case '1989':
             files = ['albanians', 'armenians', 'azerbaijani', 'belarusians', 'bulgarians',
@@ -791,46 +815,138 @@ function loadByYear(year){
                 'gagauzes', 'georgians', 'germans', 'greeks', 'hungarians', 'jews', 'koreans',
                 'mari', 'moldovans', 'mordvins',
                 'poles', 'romanians', 'russians', 'slovaks', 'tatars', 'ukrainians', 'uzbeks']
+            files.forEach(function (item){
+                console.log("Slice = " + item.slice(0, 3))
+                if (item.slice(0, 3) === nationId) {
+                    if (loadedScripts.get(year).get(nationId)) return;
+                    loadedScripts.get(year).set(nationId, true);
+                    requestFileFromServer(year, item);
+                    return;
+                }
+            })
+            if (validateForRequest(year, 'ukr')) {
+                requestFileFromServer(year, 'ukrainians');
+            }
+            return;
             break;
         case '1979':
             files = ['belarusians', 'bulgarians', 'gagauzs', 'greeks', 'hungarians',
                 'jews', 'karaites', 'moldovans',
                 'poles', 'romanians', 'russians', 'tatars', 'ukrainians']
+            files.forEach(function (item){
+                if (item.slice(0, 3) === nationId) {
+                    if (loadedScripts.get(year).get(nationId)) return;
+                    loadedScripts.get(year).set(nationId, true);
+                    requestFileFromServer(year, item);
+                    return;
+                }
+            })
+            if (validateForRequest(year, 'ukr')) {
+                requestFileFromServer(year, 'ukrainians');
+            }
+            return;
             break;
         case '1970':
             files = ['armenians', 'belarusians', 'bulgarians', 'chuvashi', 'gagauzes',
                 'greeks', 'gypsy', 'hungarians', 'jews', 'karaites', 'moldovans', 'mordvins',
                 'poles', 'romanians', 'russians', 'slovaks', 'tatars', 'ukrainians']
+            files.forEach(function (item){
+                if (item.slice(0, 3) === nationId) {
+                    if (loadedScripts.get(year).get(nationId)) return;
+                    loadedScripts.get(year).set(nationId, true);
+                    requestFileFromServer(year, item);
+                    return;
+                }
+            })
+            if (validateForRequest(year, 'ukr')) {
+                requestFileFromServer(year, 'ukrainians');
+            }
+            return;
             break;
         case '1959':
             files = ['belarusians', 'bulgarians', 'gagauzes', 'greeks', 'gypsy',
                 'hungarians', 'jews', 'moldovans', 'poles', 'romanians', 'russians', 'slovaks',
                 'tatars', 'ukrainians']
+            files.forEach(function (item){
+                if (item.slice(0, 3) === nationId) {
+                    if (loadedScripts.get(year).get(nationId)) return;
+                    loadedScripts.get(year).set(nationId, true);
+                    requestFileFromServer(year, item);
+                    return;
+                }
+            })
+            if (validateForRequest(year, 'ukr')) {
+                requestFileFromServer(year, 'ukrainians');
+            }
+            return;
             break;
         case '1931':
+            if(nationId === 'czs'){
+                if(validateForRequest(year, 'czs')){
+                    requestFileFromServer(year, 'czechs_and_slovaks');
+                }
+                return;
+            }
+            if(nationId === 'gyp') {
+                if(validateForRequest(year, 'gyp')){
+                    requestFileFromServer(year, 'roma');
+                }
+                return;
+            }
             files = ['armenians', 'belarusians', 'bulgarians', 'crimean_tatars',
                 'czechs_and_slovaks', 'germans', 'greeks', 'hungarians', 'jews',
                 'latvians', 'lithuanians', 'moldovans', 'poles', 'roma', 'russians',
                 'tatars', 'ukrainians']
+            files.forEach(function (item){
+                if (item.slice(0, 3) === nationId) {
+                    if (loadedScripts.get(year).get(nationId)) return;
+                    loadedScripts.get(year).set(nationId, true);
+                    requestFileFromServer(year, item);
+                    return;
+                }
+            })
+            if (validateForRequest(year, 'ukr')) {
+                requestFileFromServer(year, 'ukrainians');
+            }
+            return;
             break;
         case '1910':
             files = ['armenians', 'belarusians', 'bulgarians', 'czechs', 'germans', 'greeks',
                 'gypsy', 'jews', 'moldovans', 'polish', 'russians', 'tatars', 'ukrainians']
+            files.forEach(function (item){
+                if (item.slice(0, 3) === nationId) {
+                    if (loadedScripts.get(year).get(nationId)) return;
+                    loadedScripts.get(year).set(nationId, true);
+                    requestFileFromServer(year, item);
+                    return;
+                }
+            })
+            if (validateForRequest(year, 'ukr')) {
+                requestFileFromServer(year, 'ukrainians');
+            }
+            return;
             break;
     }
 
-    for (let i = 0; i < files.length; ++i) {
-        let dir = "Maps/maps" + year.toString() + "/" + files[i] + ".js";
-        $.ajax({
-            url: dir,
-            dataType: "script",
-            cache: false,
-            success: function() {
-                console.log("File loaded and executed.");
-            },
-            error: function(xhr, status, error) {
-                console.error("Error loading file:", error);
-            }
-        });
-    }
+}
+
+function validateForRequest(year, nation) {
+    if (loadedScripts.get(year).get(nation)) return false;
+    loadedScripts.get(year).set(nation, true);
+    return true;
+}
+
+function requestFileFromServer(year, nation) {
+    let dir = "Maps/maps" + year.toString() + "/" + nation + ".js";
+    $.ajax({
+        url: dir,
+        dataType: "script",
+        cache: false,
+        success: function() {
+            console.log("File loaded and executed.");
+        },
+        error: function(xhr, status, error) {
+            // console.error("Error loading file:", error);
+        }
+    });
 }
